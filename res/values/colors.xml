@@ -3,5 +3,7 @@
 
     <color name="orange">#F98907</color>
     <color name="orange_pressed">#FF8907</color>
+    
+    <color name="title_black">#373330</color>
 
 </resources>
