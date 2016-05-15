@@ -2,15 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/selector_white_light2deep"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:paddingTop="20dp">
+    android:paddingTop="20dp" >
 
     <ImageView
         android:id="@+id/img_icon"
-        android:layout_centerVertical="true"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_centerVertical="true"
         android:src="@drawable/ic_launcher" />
 
     <TextView
@@ -34,7 +35,6 @@
         android:text="成都市三环路东二段龙潭总部经济城成之路6号多元总部7-1-1"
         android:textColor="#666666"
         android:textSize="12sp" />
-
 
     <TextView
         android:layout_width="match_parent"

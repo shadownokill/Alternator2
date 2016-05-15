@@ -1,4 +1,8 @@
-package com.shadow.alternator;
+package com.shadow.alternator.activity;
+
+import com.shadow.alternator.R;
+import com.shadow.alternator.R.id;
+import com.shadow.alternator.R.layout;
 
 import android.app.Activity;
 import android.content.Intent;

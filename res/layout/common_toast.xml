@@ -9,7 +9,7 @@
     android:paddingRight="20dp"
     android:paddingTop="20dp" >
 
-    <com.chenjin.app.famishare.view.HandyTextView
+    <TextView
         android:id="@+id/toast_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

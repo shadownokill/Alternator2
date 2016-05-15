@@ -28,8 +28,8 @@ public class BaseActivity extends FragmentActivity {
 		ToastUtil.show(getActivity(), text, state);
 	}
 	
-	class Title {
-		TextView text_left,text_title, text_right;
+	public class Title {
+		public TextView text_left,text_title, text_right;
 		public Title(){
 			text_left = (TextView) findViewById(R.id.text_left);
 			text_title = (TextView) findViewById(R.id.text_title);

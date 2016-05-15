@@ -9,11 +9,12 @@
         android:targetSdkVersion="21" />
 
     <application
+        android:name="com.shadow.alternator.AlternatorApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Light.NoTitleBar" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.shadow.alternator.activity.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -23,7 +24,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MyAccountInfoActivity"
+            android:name="com.shadow.alternator.activity.MyAccountInfoActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.shadow.alternator.activity.LoginActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.shadow.alternator.activity.AlternatorListActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.shadow.alternator.activity.AlternatorDetailActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.shadow.alternator.activity.AlternatorRealtimeActivity"
             android:screenOrientation="portrait" >
         </activity>
     </application>

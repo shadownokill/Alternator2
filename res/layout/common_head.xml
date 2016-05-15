@@ -2,30 +2,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:background="@color/title_black">
+    android:background="@color/title_black" >
 
     <TextView
         android:id="@+id/text_left"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@drawable/selector_back"
+        android:background="@drawable/selector_def"
         android:drawableLeft="@drawable/back"
+        android:drawablePadding="5dp"
         android:gravity="center"
         android:paddingLeft="10dp"
-        android:paddingRight="20dp" />
+        android:paddingRight="10dp"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/text_right"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:background="@drawable/selector_back"
-        android:gravity="center" />
+        android:background="@drawable/selector_def"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

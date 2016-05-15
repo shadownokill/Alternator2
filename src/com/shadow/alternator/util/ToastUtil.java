@@ -21,10 +21,10 @@ public class ToastUtil {
 
 	private static void initIcons(Context context) {
 		if (ok == null) {
-			ok = context.getResources().getDrawable(R.drawable.ic_launcher);
+			ok = context.getResources().getDrawable(R.drawable.logo);
 		}
 		if (error == null) {
-			error = context.getResources().getDrawable(R.drawable.ic_launcher);
+			error = context.getResources().getDrawable(R.drawable.logo);
 		}
 	}
 

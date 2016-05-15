@@ -2,8 +2,11 @@
 <resources>
 
     <color name="orange">#F98907</color>
-    <color name="orange_pressed">#FF8907</color>
+    <color name="orange_pressed">#FF0000</color>
     
     <color name="title_black">#373330</color>
 
+    <color name="deep_blue">#162830</color>
+    <color name="deep_blue2">#2E3E45</color>
+    <color name="light_blue">#00CCD9</color>
 </resources>

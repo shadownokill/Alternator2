@@ -1,5 +1,6 @@
-package com.shadow.alternator;
+package com.shadow.alternator.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -8,6 +9,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.shadow.alternator.BaseActivity;
+import com.shadow.alternator.R;
+import com.shadow.alternator.R.id;
+import com.shadow.alternator.R.layout;
 import com.shadow.alternator.util.StringTool;
 import com.shadow.alternator.util.ToastUtil;
 
@@ -36,14 +41,16 @@ public class LoginActivity extends BaseActivity {
 		text_login = (TextView) findViewById(R.id.text_login);
 		text_ = (TextView) findViewById(R.id.text_);
 		text_forget = (TextView) findViewById(R.id.text_forget);
-		
-		text_login.setOnClickListener(new OnClickListener(){
-			
+
+		text_login.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				if (check()) {
-					//login 
+					// login
+					startActivity(new Intent(LoginActivity.this, MyAccountInfoActivity.class));
+					finish();
 				}
 			}
 		});
@@ -51,11 +58,11 @@ public class LoginActivity extends BaseActivity {
 
 	private boolean check() {
 		if (StringTool.isEmpty(edit_account)) {
-			ToastUtil.show(getActivity(), "«Î ‰»Î’À∫≈", false);
+			ToastUtil.show(getActivity(), "ËØ∑ËæìÂÖ•Ë¥¶Âè∑", false);
 			return false;
 		}
 		if (StringTool.isEmpty(edit_pwd)) {
-			ToastUtil.show(getActivity(), "«Î ‰»Î√‹¬Î", false);
+			ToastUtil.show(getActivity(), "ËØ∑ËæìÂÖ•ÂØÜÁ†Å", false);
 			return false;
 		}
 
