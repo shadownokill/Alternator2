@@ -19,11 +19,11 @@ import android.widget.TextView;
 
 import com.shadow.alternator.BaseActivity;
 import com.shadow.alternator.R;
-import com.shadow.alternator.fragment.ControllerFragment;
-import com.shadow.alternator.fragment.RealtimeEngineFragment;
-import com.shadow.alternator.fragment.WaringsFragment;
+import com.shadow.alternator.fragment.RealTimeDetail1Fragment;
+import com.shadow.alternator.fragment.RealTimeDetail2Fragment;
+import com.shadow.alternator.fragment.RealTimeDetail4Fragment;
 
-public class AlternatorRealtimeActivity extends BaseActivity {
+public class AlternatorRealTimeDetailActivity extends BaseActivity {
 
 	private HorizontalScrollView hsv_titles;
 	private LinearLayout llayout_titles;
@@ -78,13 +78,10 @@ public class AlternatorRealtimeActivity extends BaseActivity {
 		hsv_titles = (HorizontalScrollView) findViewById(R.id.hsv_titles);
 		llayout_titles = (LinearLayout) findViewById(R.id.llayout_titles);
 		hsv_titles.setBackgroundColor(getResources().getColor(R.color.deep_blue2));
-		// 报警，发动机，负载，发电，市电，控制器
-		llayout_titles.addView(getTypeTitleView("报警", 0));
-		llayout_titles.addView(getTypeTitleView("发动机", 1));
-		llayout_titles.addView(getTypeTitleView("负载", 2));
-		llayout_titles.addView(getTypeTitleView("发电", 3));
-		llayout_titles.addView(getTypeTitleView("市电", 4));
-		llayout_titles.addView(getTypeTitleView("控制器", 5));
+		llayout_titles.addView(getTypeTitleView("发动机", 0));
+		llayout_titles.addView(getTypeTitleView("发电", 1));
+		llayout_titles.addView(getTypeTitleView("市电", 2));
+		llayout_titles.addView(getTypeTitleView("控制器", 3));
 		TypeTitle.on(llayout_titles.getChildAt(0));
 		viewpager = (ViewPager) findViewById(R.id.viewpager);
 		viewpager.setOnPageChangeListener(new OnPageChangeListener() {
@@ -97,8 +94,6 @@ public class AlternatorRealtimeActivity extends BaseActivity {
 				TypeTitle.off(llayout_titles.getChildAt(1));
 				TypeTitle.off(llayout_titles.getChildAt(2));
 				TypeTitle.off(llayout_titles.getChildAt(3));
-				TypeTitle.off(llayout_titles.getChildAt(4));
-				TypeTitle.off(llayout_titles.getChildAt(5));
 				TypeTitle.on(llayout_titles.getChildAt(arg0));
 			}
 
@@ -134,12 +129,10 @@ public class AlternatorRealtimeActivity extends BaseActivity {
 		public DetailPagerAdapter(FragmentManager fm) {
 			super(fm);
 			// TODO Auto-generated constructor stub
-			fragments.add(new WaringsFragment());
-			fragments.add(new RealtimeEngineFragment());
-			fragments.add(new RealtimeEngineFragment());
-			fragments.add(new RealtimeEngineFragment());
-			fragments.add(new RealtimeEngineFragment());
-			fragments.add(new ControllerFragment());
+			fragments.add(new RealTimeDetail1Fragment());
+			fragments.add(new RealTimeDetail2Fragment());
+			fragments.add(new RealTimeDetail2Fragment());
+			fragments.add(new RealTimeDetail4Fragment());
 		}
 
 		@Override
@@ -155,7 +148,5 @@ public class AlternatorRealtimeActivity extends BaseActivity {
 		}
 
 	}
-
-
 
 }

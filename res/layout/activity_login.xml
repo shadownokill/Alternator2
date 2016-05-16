@@ -22,6 +22,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="60dp"
         android:background="@null"
+        android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:gravity="center"
         android:hint="账号"
         android:singleLine="true"

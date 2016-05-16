@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/deep_blue"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -108,5 +109,29 @@
             <include layout="@layout/item_horizontal_data" />
         </RelativeLayout>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/deep_blue2"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/text_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_data"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="查看详细数据"
+                android:textColor="@color/light_blue"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>

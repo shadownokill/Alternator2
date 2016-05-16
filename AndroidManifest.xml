@@ -43,6 +43,10 @@
             android:name="com.shadow.alternator.activity.AlternatorRealtimeActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.shadow.alternator.activity.AlternatorRealTimeDetailActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
