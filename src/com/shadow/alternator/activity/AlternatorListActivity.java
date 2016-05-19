@@ -2,6 +2,8 @@ package com.shadow.alternator.activity;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,24 +24,78 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.shadow.alternator.BaseActivity;
 import com.shadow.alternator.R;
+import com.shadow.alternator.bean.DeviceModel;
+import com.shadow.alternator.request.AlternatorCallBack;
+import com.shadow.alternator.request.AlternatorRequest;
 import com.shadow.alternator.util.StringTool;
+import com.shadow.alternator.util.ToastUtil;
+import com.shadow.alternator.util.WindowLoading;
 
 public class AlternatorListActivity extends BaseActivity {
 	private EditText edit;
 	private TextView text_hint;
 	private ListView list;
-	private ArrayList<Alternator> infos = new ArrayList<Alternator>();
+	private ArrayList<DeviceModel> infos = new ArrayList<DeviceModel>();
 	private AlternatorAdapter adapter;
-	private String account = "";
+	private String account = "", cid = "";
+
 	@Override
 	protected void onCreate(@Nullable Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_list);
-		account = getIntent().getExtras().getString("account"); 
+		account = getIntent().getExtras().getString("account");
+		cid = getIntent().getExtras().getString("cid");
 		initView();
+	}
+
+	private void getDeviceList() {
+		AlternatorCallBack callBack = new AlternatorCallBack() {
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+				if (StringTool.isEmpty(data)) {
+					ToastUtil.show(getActivity(), "获取设备列表失败", false);
+					return;
+				}
+
+//				ArrayList<DeviceModel> deviceModels = new Gson().fromJson(data, new TypeToken<ArrayList<DeviceModel>>() {}.getType());
+				JSONArray ja = new JSONArray(data);
+				for (int i = 0; i < ja.length(); i++) {
+					DeviceModel d = new Gson().fromJson(ja.getJSONObject(i).toString(), DeviceModel.class);
+					infos.add(d);
+				}
+
+				//infos.addAll(deviceModels);
+				adapter.notifyDataSetChanged();
+			}
+
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+				ToastUtil.show(getActivity(), StringTool.isEmpty(msg) ? "获取设备列表失败" : msg, false);
+			}
+		};
+		callBack.setWindowLoading(new WindowLoading(list));
+		AlternatorRequest.getDeviceList(cid, callBack);
+	}
+
+	boolean first = true;
+
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		// TODO Auto-generated method stub
+		super.onWindowFocusChanged(hasFocus);
+		if (hasFocus && first) {
+			first = false;
+			getDeviceList();
+		}
 	}
 
 	private void initView() {
@@ -50,20 +106,13 @@ public class AlternatorListActivity extends BaseActivity {
 		bindTitle();
 		title.text_left.setText(account);
 		title.text_left.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				finish();
 			}
 		});
-		Alternator info = new Alternator();
-		info.setIp("192.168.1.1");
-		info.setName("成都特斯拉云网络技术有限公司");
-		infos.add(info);
-		infos.add(info);
-		infos.add(info);
-		infos.add(info);
 
 		adapter = new AlternatorAdapter(this, infos);
 		list.setAdapter(adapter);
@@ -98,7 +147,7 @@ public class AlternatorListActivity extends BaseActivity {
 			}
 		});
 	}
-	
+
 	private OnItemClickListener onItemClickListener = new OnItemClickListener() {
 
 		@Override
@@ -112,9 +161,9 @@ public class AlternatorListActivity extends BaseActivity {
 	class AlternatorAdapter extends BaseAdapter {
 
 		Context context;
-		ArrayList<Alternator> infos;
+		ArrayList<DeviceModel> infos;
 
-		public AlternatorAdapter(Context context, ArrayList<Alternator> infos) {
+		public AlternatorAdapter(Context context, ArrayList<DeviceModel> infos) {
 			this.context = context;
 			this.infos = infos;
 		}
@@ -149,10 +198,10 @@ public class AlternatorListActivity extends BaseActivity {
 				holder = (Holder) convertView.getTag();
 			}
 			holder.img_icon.setImageResource(R.drawable.logo);
-			holder.text_name.setText(infos.get(position).getName());
-			holder.text_ip.setText(infos.get(position).getIp());
+			holder.text_name.setText(infos.get(position).dev_name);
+			holder.text_ip.setText(infos.get(position).dev_addr);
 			holder.img_a1.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
@@ -164,15 +213,13 @@ public class AlternatorListActivity extends BaseActivity {
 		}
 
 		class Holder {
-			 ImageView img_icon;
-			 TextView text_name;
-			 TextView text_ip;
-			 LinearLayout llayout_action;
-			 ImageView img_a1;
-			 ImageView img_a2;
-			 ImageView img_a3;
-			
-
+			ImageView img_icon;
+			TextView text_name;
+			TextView text_ip;
+			LinearLayout llayout_action;
+			ImageView img_a1;
+			ImageView img_a2;
+			ImageView img_a3;
 
 			public Holder(View v) {
 				img_icon = (ImageView) v.findViewById(R.id.img_icon);
@@ -223,9 +270,6 @@ public class AlternatorListActivity extends BaseActivity {
 			this.id = id;
 		}
 
-		
-
 	}
-
 
 }

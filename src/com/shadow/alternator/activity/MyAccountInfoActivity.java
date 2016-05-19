@@ -2,6 +2,8 @@ package com.shadow.alternator.activity;
 
 import java.util.ArrayList;
 
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,24 +23,70 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.shadow.alternator.BaseActivity;
 import com.shadow.alternator.R;
+import com.shadow.alternator.bean.CompanyModel;
+import com.shadow.alternator.bean.UserModel;
+import com.shadow.alternator.request.AlternatorCallBack;
+import com.shadow.alternator.request.AlternatorRequest;
+import com.shadow.alternator.util.SimpleCacheUtil;
 import com.shadow.alternator.util.StringTool;
 import com.shadow.alternator.util.ToastUtil;
+import com.shadow.alternator.util.WindowLoading;
+import com.squareup.picasso.Picasso;
 
 public class MyAccountInfoActivity extends BaseActivity {
 	private EditText edit;
 	private TextView text_hint;
 	private ListView list;
-	private ArrayList<AccountInfo> infos = new ArrayList<MyAccountInfoActivity.AccountInfo>();
+	private ArrayList<CompanyModel> infos = new ArrayList<CompanyModel>();
 	private AccountInfoAdapter adapter;
+	private UserModel userModel;
 
 	@Override
 	protected void onCreate(@Nullable Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_list);
+		userModel = new Gson().fromJson(getIntent().getExtras().getString("data"), UserModel.class);
+
 		initView();
+	}
+	
+	boolean first = true;
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		// TODO Auto-generated method stub
+		super.onWindowFocusChanged(hasFocus);
+		if (hasFocus && first) {
+			first = false;
+			getCompanyInfo();
+		}
+	}
+
+	private void getCompanyInfo() {
+		AlternatorCallBack callBack = new AlternatorCallBack() {
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+				CompanyModel companyModel = new Gson().fromJson(data, CompanyModel.class);
+				title.text_title.setText(companyModel.company_name);
+				infos.add(companyModel);
+				adapter.notifyDataSetChanged();
+			}
+
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+				ToastUtil.show(getActivity(), StringTool.isEmpty(msg) ? "获取公司信息失败" : msg, false);
+			}
+		};
+		callBack.setWindowLoading(new WindowLoading(list));
+		
+		AlternatorRequest.getCompanyInfo(userModel.user_company_id+"", callBack);
 	}
 
 	private void initView() {
@@ -49,19 +97,17 @@ public class MyAccountInfoActivity extends BaseActivity {
 		bindTitle();
 		title.text_left.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.menu), null, null, null);
 		title.text_left.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				ToastUtil.show(getActivity(), "Menu", true);
+				ToastUtil.show(getActivity(), "退出登录", true);
+				SimpleCacheUtil.setSavePassword(getActivity(), false);
+				SimpleCacheUtil.savePassword(getActivity(), "", "");
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+				finish();
 			}
 		});
-		title.text_title.setText("特斯拉云");
-		AccountInfo info = new AccountInfo();
-		info.setAddress("成都市三环路东二段龙潭总部经济城成致路6号多元总部7-1-1");
-		info.setNum("12");
-		info.setTitle("成都特斯拉云网络技术有限公司");
-		infos.add(info);
 
 		adapter = new AccountInfoAdapter(this, infos);
 		list.setAdapter(adapter);
@@ -96,14 +142,15 @@ public class MyAccountInfoActivity extends BaseActivity {
 			}
 		});
 	}
-	
+
 	private OnItemClickListener onItemClickListener = new OnItemClickListener() {
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			// TODO Auto-generated method stub
 			Intent intent = new Intent(MyAccountInfoActivity.this, AlternatorListActivity.class);
-			intent.putExtra("account", infos.get(position).getTitle());
+			intent.putExtra("account", infos.get(position).company_name);
+			intent.putExtra("cid", infos.get(position).company_id+"");
 			startActivity(intent);
 		}
 	};
@@ -111,9 +158,9 @@ public class MyAccountInfoActivity extends BaseActivity {
 	class AccountInfoAdapter extends BaseAdapter {
 
 		Context context;
-		ArrayList<AccountInfo> infos;
+		ArrayList<CompanyModel> infos;
 
-		public AccountInfoAdapter(Context context, ArrayList<AccountInfo> infos) {
+		public AccountInfoAdapter(Context context, ArrayList<CompanyModel> infos) {
 			this.context = context;
 			this.infos = infos;
 		}
@@ -147,10 +194,10 @@ public class MyAccountInfoActivity extends BaseActivity {
 			} else {
 				holder = (Holder) convertView.getTag();
 			}
-			holder.img_icon.setImageResource(R.drawable.logo);
-			holder.text_title.setText(infos.get(position).getTitle());
-			holder.text_content.setText(infos.get(position).getAddress());
-			holder.text_arrow.setText(infos.get(position).getNum());
+			Picasso.with(context).load(infos.get(position).company_logo).noPlaceholder().into(holder.img_icon);
+			holder.text_title.setText(infos.get(position).company_name);
+			holder.text_content.setText(infos.get(position).company_address);
+			holder.text_arrow.setText(infos.get(position).company_id+"");
 			return convertView;
 		}
 
