@@ -1,5 +1,12 @@
 package com.shadow.alternator.fragment;
 
+import com.google.gson.Gson;
+import com.shadow.alternator.AKeys;
+import com.shadow.alternator.R;
+import com.shadow.alternator.activity.AlternatorRealTimeDetailActivity;
+import com.shadow.alternator.bean.DeviceBasicModel;
+import com.shadow.alternator.util.Dp;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,21 +16,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.RelativeLayout.LayoutParams;
 
-import com.google.gson.Gson;
-import com.shadow.alternator.AKeys;
-import com.shadow.alternator.R;
-import com.shadow.alternator.activity.AlternatorRealTimeDetailActivity;
-import com.shadow.alternator.bean.DeviceBasicModel;
-import com.shadow.alternator.util.Dp;
-
-public class RealtimeEngineFragment extends Fragment {
+public class RealTimeElectricFragment extends Fragment {
 	private ImageView img_face;
 	private ImageView img_pointer;
 	private RelativeLayout rlayout_1;
@@ -32,7 +32,7 @@ public class RealtimeEngineFragment extends Fragment {
 	private RelativeLayout rlayout_4;
 	private RelativeLayout rlayout_5;
 	private TextView text_detail;
-
+	private int page = 0;
 	BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 
 		@Override
@@ -45,24 +45,30 @@ public class RealtimeEngineFragment extends Fragment {
 	};
 
 	private void updateData(DeviceBasicModel basicModel) {
-		int speed = basicModel.DES_SPEED;
-		float max = 2400f;
-		float degree = 240f;
-		int degreeStart = -120;
-		float speedperdegree = max / degree;
-		int d = (int) (speed / speedperdegree);
-		img_pointer.setRotation(d + degreeStart);
-		setData(rlayout_1, "----", R.drawable.search, (int)(basicModel.DES_WATER_TEMP/120.0f) , RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_2, "####", R.drawable.search, basicModel.DES_FUEL_LEVEL, RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_3, basicModel.DES_LUB_PREESURE_Format+"kPa\n("+basicModel.DES_LUB_PREESURE+"Bar)", R.drawable.search, (int)(basicModel.DES_LUB_PREESURE/1000f), RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_4, basicModel.DES_BATT_VOLT+"V", R.drawable.search, (int)((basicModel.DES_BATT_VOLT/60f)*100), RelativeLayout.ALIGN_PARENT_LEFT);
-		setData(rlayout_5, basicModel.DES_CHARGE_VOLT+"V", R.drawable.search, (int)((basicModel.DES_CHARGE_VOLT/60f)*100), RelativeLayout.ALIGN_PARENT_LEFT);
+		if (page == 3) {
+			int a = basicModel.OIL_VOLT_A;
+			int b = basicModel.OIL_VOLT_B;
+			int c = basicModel.OIL_VOLT_C;
+			setData(rlayout_1, a+"V", "L1-2", (int) ((a/60f)*100));
+			setData(rlayout_2, b+"V", "L2-3", (int) ((b/60f)*100));
+			setData(rlayout_3, c+"V", "L3-1", (int) ((c/60f)*100));
+			setData(rlayout_4, "F(频率)", "Hz", "" + basicModel.GEN_FREQ_Format);
+		}else{
+			int a = basicModel.MAIN_VOLT_A;
+			int b = basicModel.MAIN_VOLT_B;
+			int c = basicModel.MAIN_VOLT_C;
+			setData(rlayout_1, a+"V", "L1-2", (int) ((a/60f)*100));
+			setData(rlayout_2, b+"V", "L2-3", (int) ((b/60f)*100));
+			setData(rlayout_3, c+"V", "L3-1", (int) ((c/60f)*100));
+			setData(rlayout_4, "F(频率)", "Hz", "" + basicModel.MAIN_FREQ_Format);
+		}
 	}
 
 	@Override
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		page = getArguments().getInt("page");
 		getActivity().registerReceiver(broadcastReceiver, new IntentFilter(AKeys.DEVICE_BASIC_INFO_LOAD_SUCCESS));
 	}
 
@@ -77,7 +83,7 @@ public class RealtimeEngineFragment extends Fragment {
 	@Nullable
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View v = inflater.inflate(R.layout.fragment_engine, null);
+		View v = inflater.inflate(R.layout.fragment_realtime_electric, null);
 		v.setBackgroundColor(getActivity().getResources().getColor(R.color.deep_blue));
 		img_face = (ImageView) v.findViewById(R.id.img_face);
 		img_pointer = (ImageView) v.findViewById(R.id.img_pointer);
@@ -87,12 +93,10 @@ public class RealtimeEngineFragment extends Fragment {
 		rlayout_4 = (RelativeLayout) v.findViewById(R.id.rlayout_4);
 		rlayout_5 = (RelativeLayout) v.findViewById(R.id.rlayout_5);
 		text_detail = (TextView) v.findViewById(R.id.text_detail);
-		img_pointer.setRotation(-120);
-		setData(rlayout_1, "----", R.drawable.search, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_2, "####", R.drawable.search, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_3, "0kPa\n(0.0Bar)", R.drawable.search, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_4, "V", R.drawable.search, 0, RelativeLayout.ALIGN_PARENT_LEFT);
-		setData(rlayout_5, "V", R.drawable.search, 0, RelativeLayout.ALIGN_PARENT_LEFT);
+		setData(rlayout_1, "0.0V", "L1-2", 0);
+		setData(rlayout_2, "0.0V", "L2-3", 0);
+		setData(rlayout_3, "0.0V", "L3-1", 0);
+		setData(rlayout_4, "F(频率)", "Hz", "0.0");
 		text_detail.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -104,24 +108,29 @@ public class RealtimeEngineFragment extends Fragment {
 		return v;
 	}
 
-	private void setData(View v, String u, int resId, int per, int rule) {
+	private void setData(View v, String u, String un, int per) {
 		TextView unit = (TextView) v.findViewById(R.id.text_unit);
 		TextView icon = (TextView) v.findViewById(R.id.text_icon);
 		TextView text_per = (TextView) v.findViewById(R.id.text_per);
 		unit.setText(u);
-		if (resId != -1) {
-			icon.setBackgroundResource(resId);
-		}
+		icon.setText(un);
+
 		if (per > -1 && per < 101) {
-			RelativeLayout.LayoutParams params;
-			if (rule == RelativeLayout.ALIGN_PARENT_BOTTOM) {
-				params = new LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, Dp.dip2px(getActivity(), per));
-			} else {
-				params = new LayoutParams(Dp.dip2px(getActivity(), per), RelativeLayout.LayoutParams.MATCH_PARENT);
-			}
-			params.addRule(rule);
+			RelativeLayout.LayoutParams params = new LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, Dp.dip2px(getActivity(), per));
+			params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 			text_per.setLayoutParams(params);
 		}
 
 	}
+
+	private void setData(View v, String discri, String u, String value) {
+		TextView unit = (TextView) v.findViewById(R.id.text_unit);
+		TextView icon = (TextView) v.findViewById(R.id.text_icon);
+		TextView text_value = (TextView) v.findViewById(R.id.text_value);
+		unit.setText(u);
+		icon.setText(discri);
+		text_value.setText(value);
+
+	}
+
 }

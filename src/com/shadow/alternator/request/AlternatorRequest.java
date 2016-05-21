@@ -119,6 +119,9 @@ public class AlternatorRequest {
         Call call = client.newCall(request);
         if (responseCallback != null) {
             responseCallback.setCall(call);
+            if (responseCallback.getLoading() != null) {
+                responseCallback.getLoading().show();
+            }
         }
         call.enqueue(responseCallback == null ? new Callback() {
 

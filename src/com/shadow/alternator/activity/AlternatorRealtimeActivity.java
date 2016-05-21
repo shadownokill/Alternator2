@@ -2,8 +2,10 @@ package com.shadow.alternator.activity;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,25 +19,188 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.shadow.alternator.AKeys;
 import com.shadow.alternator.BaseActivity;
 import com.shadow.alternator.R;
+import com.shadow.alternator.bean.DeviceBasicModel;
 import com.shadow.alternator.fragment.ControllerFragment;
+import com.shadow.alternator.fragment.RealTimeElectricFragment;
+import com.shadow.alternator.fragment.RealTimeWorkloadFragment;
 import com.shadow.alternator.fragment.RealtimeEngineFragment;
 import com.shadow.alternator.fragment.WaringsFragment;
+import com.shadow.alternator.request.AlternatorCallBack;
+import com.shadow.alternator.request.AlternatorRequest;
 
-public class AlternatorRealtimeActivity extends BaseActivity {
+interface GetBasicModel {
+	public DeviceBasicModel getModel();
+}
+
+public class AlternatorRealtimeActivity extends BaseActivity implements GetBasicModel {
 
 	private HorizontalScrollView hsv_titles;
 	private LinearLayout llayout_titles;
 	private ViewPager viewpager;
 	private DetailPagerAdapter adapter;
+	private String id = "";
+	private DeviceBasicModel basicModel;
 
 	@Override
 	protected void onCreate(@Nullable Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_fragments);
+		id = getIntent().getExtras().getString("id");
 		initView();
+		getRealTimeData();
+		getWarings();
+		getIO();
+		getStatus();
+	}
+	
+	private void getWarings(){
+		AlternatorRequest.getAlarms(id, new AlternatorCallBack(){
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+				
+				Intent intent = new Intent(AKeys.DEVICE_WARINGS_LOAD_SUCCESS);
+				intent.putExtra("data", data);
+				sendBroadcast(intent);
+				
+				new Handler().postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						getWarings();
+					}
+				}, 1000);
+			}
+			
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+				new Handler().postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						getWarings();
+					}
+				}, 1000);
+			}
+		});
+	}
+	private void getIO(){
+		AlternatorRequest.getDeviceIO(id, new AlternatorCallBack(){
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+				
+				Intent intent = new Intent(AKeys.DEVICE_IO_LOAD_SUCCESS);
+				intent.putExtra("data", data);
+				sendBroadcast(intent);
+				
+				new Handler().postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						getIO();
+					}
+				}, 1000);
+			}
+			
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+				new Handler().postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						getIO();
+					}
+				}, 1000);
+			}
+		});
+	}
+	private void getStatus(){
+		AlternatorRequest.getDeviceIO(id, new AlternatorCallBack(){
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+				
+				Intent intent = new Intent(AKeys.DEVICE_STATUS_LOAD_SUCCESS);
+				intent.putExtra("data", data);
+				sendBroadcast(intent);
+				
+				new Handler().postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						getStatus();
+					}
+				}, 1000);
+			}
+			
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+				new Handler().postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						getStatus();
+					}
+				}, 1000);
+			}
+		});
+	}
+
+	private void getRealTimeData() {
+		AlternatorRequest.getDeviceInfo(id, new AlternatorCallBack() {
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+				basicModel = new Gson().fromJson(data, DeviceBasicModel.class);
+				Intent intent = new Intent(AKeys.DEVICE_BASIC_INFO_LOAD_SUCCESS);
+				intent.putExtra("data", data);
+				sendBroadcast(intent);
+				new Handler().postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						getRealTimeData();
+					}
+				}, 1000);
+			}
+
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+				new Handler().postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						getRealTimeData();
+					}
+				}, 1000);
+			}
+		});
 	}
 
 	private View getTypeTitleView(String type, final int index) {
@@ -136,9 +301,17 @@ public class AlternatorRealtimeActivity extends BaseActivity {
 			// TODO Auto-generated constructor stub
 			fragments.add(new WaringsFragment());
 			fragments.add(new RealtimeEngineFragment());
-			fragments.add(new RealtimeEngineFragment());
-			fragments.add(new RealtimeEngineFragment());
-			fragments.add(new RealtimeEngineFragment());
+			fragments.add(new RealTimeWorkloadFragment());
+			RealTimeElectricFragment f1 = new RealTimeElectricFragment();
+			Bundle bundle = new Bundle();
+			bundle.putInt("page", 3);
+			f1.setArguments(bundle);
+			fragments.add(f1);
+			RealTimeElectricFragment f2 = new RealTimeElectricFragment();
+			Bundle bundle2 = new Bundle();
+			bundle2.putInt("page", 4);
+			f2.setArguments(bundle2);
+			fragments.add(f2);
 			fragments.add(new ControllerFragment());
 		}
 
@@ -156,6 +329,10 @@ public class AlternatorRealtimeActivity extends BaseActivity {
 
 	}
 
-
+	@Override
+	public DeviceBasicModel getModel() {
+		// TODO Auto-generated method stub
+		return basicModel;
+	}
 
 }

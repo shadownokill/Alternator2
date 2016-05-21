@@ -59,6 +59,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="UL - L"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -86,6 +88,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -113,6 +117,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -135,11 +141,13 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/text_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
-                        android:id="@+id/text_3"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -164,6 +172,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="V"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -187,6 +197,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="UL - N"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -201,11 +213,13 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
                         android:id="@+id/text_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -220,12 +234,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
-                        android:text="0.0"
                         android:id="@+id/text_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
+                        android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -239,11 +255,13 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
-                        android:id="@+id/text_6"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -260,6 +278,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="V"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -283,6 +303,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="F(频率)"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -297,12 +319,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
-                        android:id="@+id/text_7"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -318,6 +342,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="Hz"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -398,6 +424,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="I"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -412,31 +440,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
-                        android:text="0.0"
                         android:id="@+id/text_8"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingRight="3dp" >
-
-                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
-                        android:id="@+id/text_9"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -450,11 +461,34 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_9"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
+                        android:text="0.0"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingRight="3dp" >
+
+                    <TextView
                         android:id="@+id/text_10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -494,6 +528,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="P"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -508,11 +544,13 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
                         android:id="@+id/text_11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -527,11 +565,13 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
                         android:id="@+id/text_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -546,11 +586,13 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_13"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
-                        android:id="@+id/text_13"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -590,6 +632,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="Q"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -604,11 +648,13 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
                         android:id="@+id/text_14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -623,12 +669,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
-                        android:text="0.0"
                         android:id="@+id/text_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
+                        android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -642,12 +690,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
-                        android:id="@+id/text_16"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -686,6 +736,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="S"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -700,12 +752,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
-                        android:text="0.0"
                         android:id="@+id/text_17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
+                        android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -719,11 +773,13 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
                         android:id="@+id/text_18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -738,12 +794,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_19"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
-                        android:id="@+id/text_19"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -782,6 +840,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="PF"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -796,12 +856,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
-                        android:text="----"
                         android:id="@+id/text_20"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
+                        android:text="----"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -815,13 +877,15 @@
                     android:paddingRight="3dp" >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_data"
-                        android:gravity="center"
-                        android:text="----"
-                        android:textColor="#FFFFFF"
                         android:id="@+id/text_21"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_data"
+                        android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
+                        android:text="----"
+                        android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -834,12 +898,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_22"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="----"
-                        android:id="@+id/text_22"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -878,6 +944,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="Tol.P"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -892,13 +960,15 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_23"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
-                        android:id="@+id/text_23"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -974,6 +1044,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="Tol.Q"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -988,12 +1060,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_24"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
-                        android:id="@+id/text_24"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -1070,6 +1144,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="Tol.S"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -1084,11 +1160,13 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_25"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
-                        android:id="@+id/text_25"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="0.0"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -1166,6 +1244,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="PF"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
@@ -1180,12 +1260,14 @@
                     android:paddingRight="3dp" >
 
                     <TextView
+                        android:id="@+id/text_26"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_data"
                         android:gravity="center"
+                        android:paddingBottom="3dp"
+                        android:paddingTop="3dp"
                         android:text="----"
-                        android:id="@+id/text_26"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
                 </LinearLayout>

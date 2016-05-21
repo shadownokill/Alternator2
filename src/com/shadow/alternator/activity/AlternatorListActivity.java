@@ -25,7 +25,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.shadow.alternator.BaseActivity;
 import com.shadow.alternator.R;
 import com.shadow.alternator.bean.DeviceModel;
@@ -64,14 +63,16 @@ public class AlternatorListActivity extends BaseActivity {
 					return;
 				}
 
-//				ArrayList<DeviceModel> deviceModels = new Gson().fromJson(data, new TypeToken<ArrayList<DeviceModel>>() {}.getType());
+				// ArrayList<DeviceModel> deviceModels = new
+				// Gson().fromJson(data, new TypeToken<ArrayList<DeviceModel>>()
+				// {}.getType());
 				JSONArray ja = new JSONArray(data);
 				for (int i = 0; i < ja.length(); i++) {
 					DeviceModel d = new Gson().fromJson(ja.getJSONObject(i).toString(), DeviceModel.class);
 					infos.add(d);
 				}
 
-				//infos.addAll(deviceModels);
+				// infos.addAll(deviceModels);
 				adapter.notifyDataSetChanged();
 			}
 
@@ -154,6 +155,8 @@ public class AlternatorListActivity extends BaseActivity {
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			// TODO Auto-generated method stub
 			Intent intent = new Intent(AlternatorListActivity.this, AlternatorDetailActivity.class);
+			intent.putExtra("did", infos.get(position).dev_id + "");
+			intent.putExtra("data", new Gson().toJson(infos.get(position)));
 			startActivity(intent);
 		}
 	};
@@ -187,7 +190,7 @@ public class AlternatorListActivity extends BaseActivity {
 		}
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
 			Holder holder;
 			if (convertView == null) {
@@ -206,7 +209,22 @@ public class AlternatorListActivity extends BaseActivity {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					Intent intent = new Intent(context, AlternatorRealtimeActivity.class);
+					intent.putExtra("id", infos.get(position).dev_id+"");
 					startActivity(intent);
+				}
+			});
+			holder.img_a2.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+				}
+			});
+			holder.img_a3.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
 				}
 			});
 			return convertView;

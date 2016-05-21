@@ -1,6 +1,9 @@
 package com.shadow.alternator.fragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,13 +13,42 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.shadow.alternator.AKeys;
 import com.shadow.alternator.R;
 import com.shadow.alternator.activity.AlternatorRealTimeDetailActivity;
+import com.shadow.alternator.bean.DeviceStatusModel;
 
 public class ControllerFragment extends Fragment {
 
-
 	TextView text_detail;
+	BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			String s = intent.getExtras().getString("data");
+			DeviceStatusModel basicModel = new Gson().fromJson(s, DeviceStatusModel.class);
+			updateData(basicModel);
+		}
+	};
+
+	private void updateData(DeviceStatusModel basicModel) {
+	}
+
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		getActivity().registerReceiver(broadcastReceiver, new IntentFilter(AKeys.DEVICE_STATUS_LOAD_SUCCESS));
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		getActivity().unregisterReceiver(broadcastReceiver);
+	}
 
 	@Override
 	@Nullable

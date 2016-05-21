@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingRight="30dp"
-                    android:text="r/min"
+                    android:text="RPMx100"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
             </LinearLayout>

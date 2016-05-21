@@ -11,33 +11,9 @@
         android:layout_marginTop="30dp"
         android:orientation="horizontal" >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <ImageView
-                android:id="@+id/img_face"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/face_engine" />
-
-            <ImageView
-                android:id="@+id/img_pointer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerInParent="true"
-                android:rotation="-120"
-                android:src="@drawable/face_engine_pointer" />
-
-        </RelativeLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal" >
 
             <RelativeLayout
@@ -49,7 +25,8 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true" >
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" >
 
                     <include layout="@layout/item_vertical_data" />
                 </RelativeLayout>
@@ -79,7 +56,8 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true" >
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true" >
 
                     <include layout="@layout/item_vertical_data" />
                 </RelativeLayout>
@@ -90,26 +68,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="10dp" >
 
         <RelativeLayout
             android:id="@+id/rlayout_4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_height="wrap_content" >
 
-            <include layout="@layout/item_horizontal_data" />
+            <include layout="@layout/item_horizontal_data2" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/rlayout_5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <include layout="@layout/item_horizontal_data" />
-        </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout

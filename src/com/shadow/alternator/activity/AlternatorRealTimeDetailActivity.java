@@ -130,8 +130,16 @@ public class AlternatorRealTimeDetailActivity extends BaseActivity {
 			super(fm);
 			// TODO Auto-generated constructor stub
 			fragments.add(new RealTimeDetail1Fragment());
-			fragments.add(new RealTimeDetail2Fragment());
-			fragments.add(new RealTimeDetail2Fragment());
+			RealTimeDetail2Fragment d1 = new RealTimeDetail2Fragment();
+			Bundle bundle = new Bundle();
+			bundle.putInt("page", 1);
+			d1.setArguments(bundle);
+			fragments.add(d1);
+			RealTimeDetail2Fragment d2 = new RealTimeDetail2Fragment();
+			Bundle bundle2 = new Bundle();
+			bundle2.putInt("page", 2);
+			d2.setArguments(bundle2);
+			fragments.add(d2);
 			fragments.add(new RealTimeDetail4Fragment());
 		}
 
