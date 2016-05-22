@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -48,6 +49,7 @@ public class RealTimeDetail2Fragment extends Fragment {
 	private TextView text_26;
 	private RelativeLayout rlayout;
 	private TextView text_detail;
+	private LinearLayout llayout,llayout_t1;
 	private int page = 0;
 	BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 
@@ -69,36 +71,35 @@ public class RealTimeDetail2Fragment extends Fragment {
 			text_4.setText(basicModel.OIL_VOLT_A + "");
 			text_5.setText(basicModel.OIL_VOLT_B + "");
 			text_6.setText(basicModel.OIL_VOLT_C + "");
-			text_7.setText(basicModel.GEN_FREQ + "");
-			text_8.setText(basicModel.OIL_CURRENT_A + "");
-			text_9.setText(basicModel.OIL_CURRENT_B + "");
-			text_10.setText(basicModel.OIL_CURRENT_C + "");
-			text_11.setText(basicModel.OIL_ACTIVEPOWER_A + "");
-			text_12.setText(basicModel.OIL_ACTIVEPOWER_B + "");
-			text_13.setText(basicModel.OIL_ACTIVEPOWER_C + "");
-			text_14.setText(basicModel.OIL_REACTIVEPOWER_A + "");
+			text_7.setText(basicModel.GEN_FREQ_Format + "");
+			text_8.setText(basicModel.OIL_CURRENT_A_Format + "");
+			text_9.setText(basicModel.OIL_CURRENT_B_Format + "");
+			text_10.setText(basicModel.OIL_CURRENT_C_Format + "");
+			text_11.setText(basicModel.OIL_ACTIVEPOWER_A_Format + "");
+			text_12.setText(basicModel.OIL_ACTIVEPOWER_B_Format + "");
+			text_13.setText(basicModel.OIL_ACTIVEPOWER_C_Format + "");
+			text_14.setText(basicModel.OIL_REACTIVEPOWER_A+ "");
 			text_15.setText(basicModel.OIL_REACTIVEPOWER_B + "");
 			text_16.setText(basicModel.OIL_REACTIVEPOWER_C + "");
-			text_17.setText(basicModel.OIL_APPARENTPOWER_A + "");
-			text_18.setText(basicModel.OIL_APPARENTPOWER_B + "");
-			text_19.setText(basicModel.OIL_APPARENTPOWER_C + "");
-			text_20.setText(basicModel.OIL_COS_A + "");
-			text_21.setText(basicModel.OIL_COS_B + "");
-			text_22.setText(basicModel.OIL_COS_C + "");
+			text_17.setText(basicModel.OIL_APPARENTPOWER_A_Format + "");
+			text_18.setText(basicModel.OIL_APPARENTPOWER_B_Format + "");
+			text_19.setText(basicModel.OIL_APPARENTPOWER_C_Format + "");
+			text_20.setText(basicModel.OIL_COS_A_Format + "");
+			text_21.setText(basicModel.OIL_COS_B_Format + "");
+			text_22.setText(basicModel.OIL_COS_C_Format + "");
 
-			text_23.setText(basicModel.OIL_ACTIVEPOWER_TOTAL + "");
-			text_24.setText(basicModel.OIL_REACTIVEPOWER_TOTAL + "");
-			text_25.setText(basicModel.OIL_APPARENTPOWER_TOTAL + "");
-			text_26.setText(basicModel.OIL_COS + "");
+			text_23.setText(basicModel.OIL_ACTIVEPOWER_TOTAL_Format + "");
+			text_24.setText(basicModel.OIL_REACTIVEPOWER_TOTAL_Format + "");
+			text_25.setText(basicModel.OIL_APPARENTPOWER_TOTAL_Format + "");
+			text_26.setText(basicModel.OIL_COS_Format + "");
 		} else {
-
 			text_1.setText(basicModel.MAIN_VOLT_AB + "");
 			text_2.setText(basicModel.MAIN_VOLT_BC + "");
 			text_3.setText(basicModel.MAIN_VOLT_CA + "");
 			text_4.setText(basicModel.MAIN_VOLT_A + "");
 			text_5.setText(basicModel.MAIN_VOLT_B + "");
 			text_6.setText(basicModel.MAIN_VOLT_C + "");
-			text_7.setText(basicModel.MAIN_FREQ + "");
+			text_7.setText(basicModel.MAIN_FREQ_Format + "");
 			
 			text_8.setText("");
 			text_9.setText("");
@@ -175,6 +176,8 @@ public class RealTimeDetail2Fragment extends Fragment {
 		text_25 = (TextView) v.findViewById(R.id.text_25);
 		text_26 = (TextView) v.findViewById(R.id.text_26);
 		rlayout = (RelativeLayout) v.findViewById(R.id.rlayout);
+		llayout = (LinearLayout) v.findViewById(R.id.llayout);
+		llayout_t1 = (LinearLayout) v.findViewById(R.id.llayout_t1);
 		text_detail = (TextView) v.findViewById(R.id.text_detail);
 		text_detail.setOnClickListener(new OnClickListener() {
 
@@ -184,6 +187,12 @@ public class RealTimeDetail2Fragment extends Fragment {
 				getActivity().finish();
 			}
 		});
+		if (page != 1) {
+			llayout.setVisibility(View.GONE);
+			llayout_t1.setVisibility(View.GONE);
+		}
+		Intent intent = new Intent(AKeys.DEVICE_REQUEST_REFRESH);
+		getActivity().sendBroadcast(intent);
 		return v;
 	}
 

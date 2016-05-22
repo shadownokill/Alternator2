@@ -31,7 +31,6 @@
                 android:layout_centerInParent="true"
                 android:rotation="-120"
                 android:src="@drawable/face_engine_pointer" />
-
         </RelativeLayout>
 
         <LinearLayout
@@ -90,7 +89,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="10dp" >
 
         <RelativeLayout
@@ -106,6 +105,7 @@
             android:id="@+id/rlayout_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_weight="1" >
 
             <include layout="@layout/item_horizontal_data" />

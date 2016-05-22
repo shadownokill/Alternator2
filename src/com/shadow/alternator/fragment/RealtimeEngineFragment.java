@@ -22,6 +22,7 @@ import com.shadow.alternator.R;
 import com.shadow.alternator.activity.AlternatorRealTimeDetailActivity;
 import com.shadow.alternator.bean.DeviceBasicModel;
 import com.shadow.alternator.util.Dp;
+import com.shadow.alternator.util.StringTool;
 
 public class RealtimeEngineFragment extends Fragment {
 	private ImageView img_face;
@@ -52,11 +53,11 @@ public class RealtimeEngineFragment extends Fragment {
 		float speedperdegree = max / degree;
 		int d = (int) (speed / speedperdegree);
 		img_pointer.setRotation(d + degreeStart);
-		setData(rlayout_1, "----", R.drawable.search, (int)(basicModel.DES_WATER_TEMP/120.0f) , RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_2, "####", R.drawable.search, basicModel.DES_FUEL_LEVEL, RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_3, basicModel.DES_LUB_PREESURE_Format+"kPa\n("+basicModel.DES_LUB_PREESURE+"Bar)", R.drawable.search, (int)(basicModel.DES_LUB_PREESURE/1000f), RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_4, basicModel.DES_BATT_VOLT+"V", R.drawable.search, (int)((basicModel.DES_BATT_VOLT/60f)*100), RelativeLayout.ALIGN_PARENT_LEFT);
-		setData(rlayout_5, basicModel.DES_CHARGE_VOLT+"V", R.drawable.search, (int)((basicModel.DES_CHARGE_VOLT/60f)*100), RelativeLayout.ALIGN_PARENT_LEFT);
+		setData(rlayout_1, "----", R.drawable.icon_shuiwen, (int)(basicModel.DES_WATER_TEMP/120.0f) , RelativeLayout.ALIGN_PARENT_BOTTOM);
+		setData(rlayout_2, "####", R.drawable.icon_youwei, basicModel.DES_FUEL_LEVEL, RelativeLayout.ALIGN_PARENT_BOTTOM);
+		setData(rlayout_3, basicModel.DES_LUB_PREESURE_Format+"kPa", R.drawable.icon_youya, (int)(StringTool.str2double(basicModel.DES_LUB_PREESURE_Format, 0.0)/1000f), RelativeLayout.ALIGN_PARENT_BOTTOM);//\n("+basicModel.DES_LUB_PREESURE+"Bar)
+		setData(rlayout_4, basicModel.DES_BATT_VOLT_Format+"V", R.drawable.icon_dianchi, (int)((StringTool.str2double(basicModel.DES_BATT_VOLT_Format, 0.0)/60f)*100), RelativeLayout.ALIGN_PARENT_LEFT);
+		setData(rlayout_5, basicModel.DES_CHARGE_VOLT_Format+"V", R.drawable.icon_chongdian, (int)((StringTool.str2double(basicModel.DES_CHARGE_VOLT_Format, 0.0)/60f)*100), RelativeLayout.ALIGN_PARENT_LEFT);
 	}
 
 	@Override
@@ -88,11 +89,11 @@ public class RealtimeEngineFragment extends Fragment {
 		rlayout_5 = (RelativeLayout) v.findViewById(R.id.rlayout_5);
 		text_detail = (TextView) v.findViewById(R.id.text_detail);
 		img_pointer.setRotation(-120);
-		setData(rlayout_1, "----", R.drawable.search, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_2, "####", R.drawable.search, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_3, "0kPa\n(0.0Bar)", R.drawable.search, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_4, "V", R.drawable.search, 0, RelativeLayout.ALIGN_PARENT_LEFT);
-		setData(rlayout_5, "V", R.drawable.search, 0, RelativeLayout.ALIGN_PARENT_LEFT);
+		setData(rlayout_1, "----", R.drawable.icon_shuiwen, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
+		setData(rlayout_2, "####", R.drawable.icon_youwei, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
+		setData(rlayout_3, "0kPa\n(0.0Bar)", R.drawable.icon_youya, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
+		setData(rlayout_4, "V", R.drawable.icon_dianchi, 0, RelativeLayout.ALIGN_PARENT_LEFT);
+		setData(rlayout_5, "V", R.drawable.icon_chongdian, 0, RelativeLayout.ALIGN_PARENT_LEFT);
 		text_detail.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -101,6 +102,8 @@ public class RealtimeEngineFragment extends Fragment {
 				startActivity(new Intent(getActivity(), AlternatorRealTimeDetailActivity.class));
 			}
 		});
+		Intent intent = new Intent(AKeys.DEVICE_REQUEST_REFRESH);
+		getActivity().sendBroadcast(intent);
 		return v;
 	}
 

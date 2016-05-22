@@ -6,6 +6,7 @@ import com.shadow.alternator.R;
 import com.shadow.alternator.activity.AlternatorRealTimeDetailActivity;
 import com.shadow.alternator.bean.DeviceBasicModel;
 import com.shadow.alternator.util.Dp;
+import com.shadow.alternator.util.StringTool;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -46,19 +47,22 @@ public class RealTimeWorkloadFragment extends Fragment {
 	private void updateData(DeviceBasicModel basicModel) {
 		// 有功功率
 
-		int speed = basicModel.OIL_ACTIVEPOWER_TOTAL;
+		double speed = StringTool.str2double(basicModel.OIL_ACTIVEPOWER_TOTAL_Format, 0.0);
 		float max = 60f;
 		float degree = 190f;
 		int degreeStart = -95;
 		float speedperdegree = max / degree;
 		int d = (int) (speed / speedperdegree);
+		if (d+ degreeStart > 170) {
+			d = 265;
+		}
 		img_pointer.setRotation(d + degreeStart);
 
-		setData(rlayout_1, "", -1, (int) ((basicModel.OIL_ACTIVEPOWER_A / 60f)*100));
-		setData(rlayout_2, "", -1, (int) ((basicModel.OIL_ACTIVEPOWER_B / 60f))*100);
-		setData(rlayout_3, "", -1, (int) ((basicModel.OIL_ACTIVEPOWER_C / 60f))*100);
-		setData(rlayout_4, "PF(功率因素)", "", basicModel.OIL_COS+"");
-		setData(rlayout_5, "S(视在功率)", "", basicModel.OIL_APPARENTPOWER_TOTAL+"");
+		setData(rlayout_1, "", -1, (int) ((StringTool.str2double(basicModel.OIL_ACTIVEPOWER_A_Format, 0.0) / 60f)*100));
+		setData(rlayout_2, "", -1, (int) ((StringTool.str2double(basicModel.OIL_ACTIVEPOWER_B_Format, 0.0) / 60f))*100);
+		setData(rlayout_3, "", -1, (int) ((StringTool.str2double(basicModel.OIL_ACTIVEPOWER_C_Format, 0.0) / 60f))*100);
+		setData(rlayout_4, "PF(功率因素)", "", basicModel.OIL_COS_Format+"");
+		setData(rlayout_5, "S(视在功率)", "", basicModel.OIL_APPARENTPOWER_TOTAL_Format+"");
 	}
 
 	@Override
@@ -103,6 +107,8 @@ public class RealTimeWorkloadFragment extends Fragment {
 			}
 		});
 		img_pointer.setRotation(-95);
+		Intent intent = new Intent(AKeys.DEVICE_REQUEST_REFRESH);
+		getActivity().sendBroadcast(intent);
 		return v;
 	}
 

@@ -56,10 +56,10 @@ public class RealTimeDetail1Fragment extends Fragment {
 	private void updateData(DeviceBasicModel basicModel) {
 		text_value1.setText(basicModel.DES_SPEED+"");
 		text_value2.setText(basicModel.DES_WATER_TEMP+"");
-		text_value3.setText(basicModel.DES_LUB_PREESURE+"");
+		text_value3.setText(basicModel.DES_LUB_PREESURE_Format+"");
 		text_value4.setText(basicModel.DES_FUEL_LEVEL+"");
-		text_value5.setText(basicModel.DES_BATT_VOLT+"");
-		text_value6.setText(basicModel.DES_CHARGE_VOLT+"");
+		text_value5.setText(basicModel.DES_BATT_VOLT_Format+"");
+		text_value6.setText(basicModel.DES_CHARGE_VOLT_Format+"");
 		text_value7.setText(basicModel.OIL_DES_HOUR+":"+basicModel.OIL_DES_MIN);
 		text_value8.setText(basicModel.OIL_CBT+"");
 		text_value9.setText("N/A");
@@ -125,6 +125,8 @@ public class RealTimeDetail1Fragment extends Fragment {
 				getActivity().finish();
 			}
 		});
+		Intent intent = new Intent(AKeys.DEVICE_REQUEST_REFRESH);
+		getActivity().sendBroadcast(intent);
 		return v;
 	}
 }

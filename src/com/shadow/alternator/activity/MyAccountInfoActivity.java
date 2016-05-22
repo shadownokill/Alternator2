@@ -155,6 +155,12 @@ public class MyAccountInfoActivity extends BaseActivity {
 		}
 	};
 
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		//super.onBackPressed();
+		moveTaskToBack(true);
+	}
 	class AccountInfoAdapter extends BaseAdapter {
 
 		Context context;
@@ -194,10 +200,10 @@ public class MyAccountInfoActivity extends BaseActivity {
 			} else {
 				holder = (Holder) convertView.getTag();
 			}
-			Picasso.with(context).load(infos.get(position).company_logo).noPlaceholder().into(holder.img_icon);
+			Picasso.with(context).load(infos.get(position).company_logo).placeholder(R.drawable.logo).into(holder.img_icon);
 			holder.text_title.setText(infos.get(position).company_name);
 			holder.text_content.setText(infos.get(position).company_address);
-			holder.text_arrow.setText(infos.get(position).company_id+"");
+			holder.text_arrow.setText("");//infos.get(position).company_id+""
 			return convertView;
 		}
 

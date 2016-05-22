@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
 		img = (ImageView) findViewById(R.id.img);
 	}
 
+	
 	private boolean in = false;
 
 	@Override

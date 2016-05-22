@@ -2,6 +2,120 @@ package com.shadow.alternator.bean;
 
 public class DeviceAlarmModel {
 
+	public static String getAlarmName(String field){
+		if (field.equals("des_low_oilprs")) {
+			return "油压低";
+		}
+		if (field.equals("des_maint")) {
+			return "维护报警";
+		}
+		if (field.equals("des_stop_urgent")) {
+			return "紧急停机报警";
+		}
+		if (field.equals("des_stop_hot")) {
+			return "油压低停机报警";
+		}
+		if (field.equals("des_stop_overspeed")) {
+			return "超速停机报警";
+		}
+		if (field.equals("des_stop_underspeed")) {
+			return "欠速停机报警";
+		}
+		if (field.equals("des_lossspeed")) {
+			return "失速报警";
+		}
+		if (field.equals("des_lostspeed_stop")) {
+			return "速度丢失报警";
+		}
+		if (field.equals("des_stop_fail")) {
+			return "停机失败报警";
+		}
+		if (field.equals("des_oillev_low")) {
+			return "燃油位低报警";
+		}
+		if (field.equals("des_charge_fail")) {
+			return "充电失败报警";
+		}
+		if (field.equals("des_vbat_low")) {
+			return "电池电压低报警";
+		}
+		if (field.equals("des_vbat_high")) {
+			return "电池电压高报警";
+		}
+		if (field.equals("des_temp_high")) {
+			return "温度高报警";
+		}
+		if (field.equals("des_tempoffline")) {
+			return "温度传感器断线报警";
+		}
+		if (field.equals("des_oiloffline")) {
+			return "油压传感器断线报警";
+		}
+		if (field.equals("des_start_fail")) {
+			return "启动失败报警";
+		}
+		if (field.equals("des_stop_oillow")) {
+			return "燃油位低停机报警";
+		}
+		if (field.equals("des_stop_watarlow")) {
+			return "水位位低停机报警";
+		}
+		if (field.equals("des_stop_tempoffline")) {
+			return "温度断线停机报警";
+		}
+		if (field.equals("des_stop_oiloffline")) {
+			return "油压断线停机报警";
+		}
+		if (field.equals("des_stop_maint")) {
+			return "维护停机报警";
+		}
+		if (field.equals("des_outside")) {
+			return "外部报警";
+		}
+		if (field.equals("des_stop_outside")) {
+			return "外部停机报警";
+		}
+		if (field.equals("gen_over_current")) {
+			return "发电机过流报警";
+		}
+		if (field.equals("gen_over_volt")) {
+			return "发电机过压报警";
+		}
+		if (field.equals("gen_stop_overcur")) {
+			return "发电机过流停机报警";
+		}
+		if (field.equals("gen_stop_highfreq")) {
+			return "发电机频率高停机报警";
+		}
+		if (field.equals("gen_stop_lowfreq")) {
+			return "发电机频率低停机报警";
+		}
+		if (field.equals("gen_stop_nonegen")) {
+			return "发电机无发电机停机报警";
+		}
+		if (field.equals("main_stop_oilpressoffline")) {
+			return "油压传感器断线停机报警";
+		}
+		if (field.equals("main_volt_high")) {
+			return "市电电压高报警";
+		}
+		if (field.equals("main_volt_low")) {
+			return "市电电压低报警";
+		}
+		if (field.equals("main_urgent_timeover")) {
+			return "滤清维护时间到报警";
+		}
+		if (field.equals("main_offline_rotarytrans")) {
+			return "转速传感器断线报警";
+		}
+		if (field.equals("main_stop_offrottrans")) {
+			return "转速传感器断线停机报警";
+		}
+		if (field.equals("main_offline_oilpress")) {
+			return "油压传感器断线报警";
+		}
+		return "";
+	}
     /// <summary>
     /// 报警编号
     /// </summary>

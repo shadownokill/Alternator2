@@ -174,6 +174,10 @@ public class AlternatorRequest {
     	String action = "DeviceInfo/GetDeviceStatusModel";
     	return post(action, body, callback);
     }
+    public static Call command(String body, AlternatorCallBack callback) {
+    	String action = "Command/SendCommand";
+    	return post(action, body, callback);
+    }
 
     
 }

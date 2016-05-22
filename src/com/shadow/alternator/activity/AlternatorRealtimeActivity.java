@@ -2,7 +2,10 @@ package com.shadow.alternator.activity;
 
 import java.util.ArrayList;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,7 +26,10 @@ import com.google.gson.Gson;
 import com.shadow.alternator.AKeys;
 import com.shadow.alternator.BaseActivity;
 import com.shadow.alternator.R;
+import com.shadow.alternator.bean.DeviceAlarmModel;
 import com.shadow.alternator.bean.DeviceBasicModel;
+import com.shadow.alternator.bean.DeviceIOModel;
+import com.shadow.alternator.bean.DeviceStatusModel;
 import com.shadow.alternator.fragment.ControllerFragment;
 import com.shadow.alternator.fragment.RealTimeElectricFragment;
 import com.shadow.alternator.fragment.RealTimeWorkloadFragment;
@@ -31,9 +37,16 @@ import com.shadow.alternator.fragment.RealtimeEngineFragment;
 import com.shadow.alternator.fragment.WaringsFragment;
 import com.shadow.alternator.request.AlternatorCallBack;
 import com.shadow.alternator.request.AlternatorRequest;
+import com.shadow.alternator.util.ToastUtil;
 
 interface GetBasicModel {
-	public DeviceBasicModel getModel();
+	public DeviceBasicModel getModel1();
+
+	public DeviceAlarmModel getModel2();
+
+	public DeviceIOModel getModel3();
+
+	public DeviceStatusModel getModel4();
 }
 
 public class AlternatorRealtimeActivity extends BaseActivity implements GetBasicModel {
@@ -44,11 +57,20 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 	private DetailPagerAdapter adapter;
 	private String id = "";
 	private DeviceBasicModel basicModel;
+	private DeviceAlarmModel alarmModel;
+	private DeviceIOModel ioModel;
+	private DeviceStatusModel statusModel;
+	private static final int REFRESH_TIME = 1000 ;
+	private boolean loada = false;
+	private boolean loadb = false;
+	private boolean loadc = false;
+	private boolean loadd = false;
 
 	@Override
 	protected void onCreate(@Nullable Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
+		registerReceiver(broadcastReceiver, new IntentFilter(AKeys.DEVICE_REQUEST_REFRESH));
 		setContentView(R.layout.activity_fragments);
 		id = getIntent().getExtras().getString("id");
 		initView();
@@ -57,28 +79,53 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 		getIO();
 		getStatus();
 	}
-	
-	private void getWarings(){
-		AlternatorRequest.getAlarms(id, new AlternatorCallBack(){
+
+	BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			//update();
+		}
+	};
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		getActivity().unregisterReceiver(broadcastReceiver);
+	}
+
+	private void update() {
+		getRealTimeDataSingle();
+		getWaringsSingle();
+		getIOSingle();
+		getStatusSingle();
+	}
+
+	private void getWarings() {
+		AlternatorRequest.getAlarms(id, new AlternatorCallBack() {
 			@Override
 			public void onSuccess(String data) throws Exception {
 				// TODO Auto-generated method stub
 				super.onSuccess(data);
-				
+
 				Intent intent = new Intent(AKeys.DEVICE_WARINGS_LOAD_SUCCESS);
 				intent.putExtra("data", data);
 				sendBroadcast(intent);
-				
 				new Handler().postDelayed(new Runnable() {
 
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
+						if (isFinishing()) {
+							return;
+						}
 						getWarings();
 					}
-				}, 1000);
+				}, REFRESH_TIME);
 			}
-			
+
 			@Override
 			public void onError(int type, int code, String msg) {
 				// TODO Auto-generated method stub
@@ -88,81 +135,177 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
+						if (isFinishing()) {
+							return;
+						}
 						getWarings();
 					}
-				}, 1000);
+				}, REFRESH_TIME);
 			}
 		});
 	}
-	private void getIO(){
-		AlternatorRequest.getDeviceIO(id, new AlternatorCallBack(){
+
+	private void getWaringsSingle() {
+		if (loadd) {
+			return;
+		}
+
+		loadd = true;
+		AlternatorRequest.getAlarms(id, new AlternatorCallBack() {
 			@Override
 			public void onSuccess(String data) throws Exception {
 				// TODO Auto-generated method stub
 				super.onSuccess(data);
-				
+
+				Intent intent = new Intent(AKeys.DEVICE_WARINGS_LOAD_SUCCESS);
+				intent.putExtra("data", data);
+				sendBroadcast(intent);
+				loadd = false;
+			}
+
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+				loadd = false;
+			}
+		});
+	}
+
+	private void getIO() {
+		AlternatorRequest.getDeviceIO(id, new AlternatorCallBack() {
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+
 				Intent intent = new Intent(AKeys.DEVICE_IO_LOAD_SUCCESS);
 				intent.putExtra("data", data);
 				sendBroadcast(intent);
-				
+
 				new Handler().postDelayed(new Runnable() {
-					
+
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
+						if (isFinishing()) {
+							return;
+						}
 						getIO();
 					}
-				}, 1000);
+				}, REFRESH_TIME);
 			}
-			
+
 			@Override
 			public void onError(int type, int code, String msg) {
 				// TODO Auto-generated method stub
 				super.onError(type, code, msg);
 				new Handler().postDelayed(new Runnable() {
-					
+
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
+						if (isFinishing()) {
+							return;
+						}
 						getIO();
 					}
-				}, 1000);
+				}, REFRESH_TIME);
 			}
 		});
 	}
-	private void getStatus(){
-		AlternatorRequest.getDeviceIO(id, new AlternatorCallBack(){
+
+	private void getIOSingle() {
+		if (loadc) {
+			return;
+		}
+		loadc = true;
+		AlternatorRequest.getDeviceIO(id, new AlternatorCallBack() {
 			@Override
 			public void onSuccess(String data) throws Exception {
 				// TODO Auto-generated method stub
 				super.onSuccess(data);
-				
+
+				Intent intent = new Intent(AKeys.DEVICE_IO_LOAD_SUCCESS);
+				intent.putExtra("data", data);
+				sendBroadcast(intent);
+				loadc = false;
+			}
+
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+				loadc = false;
+			}
+		});
+	}
+
+	private void getStatus() {
+		AlternatorRequest.getDeviceIO(id, new AlternatorCallBack() {
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+
 				Intent intent = new Intent(AKeys.DEVICE_STATUS_LOAD_SUCCESS);
 				intent.putExtra("data", data);
 				sendBroadcast(intent);
-				
+
 				new Handler().postDelayed(new Runnable() {
-					
+
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
+						if (isFinishing()) {
+							return;
+						}
 						getStatus();
 					}
-				}, 1000);
+				}, REFRESH_TIME);
 			}
-			
+
 			@Override
 			public void onError(int type, int code, String msg) {
 				// TODO Auto-generated method stub
 				super.onError(type, code, msg);
 				new Handler().postDelayed(new Runnable() {
-					
+
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
+						if (isFinishing()) {
+							return;
+						}
 						getStatus();
 					}
-				}, 1000);
+				}, REFRESH_TIME);
+			}
+		});
+	}
+
+	private void getStatusSingle() {
+		if (loadb) {
+			return;
+		}
+		loadb = true;
+		AlternatorRequest.getDeviceIO(id, new AlternatorCallBack() {
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+
+				Intent intent = new Intent(AKeys.DEVICE_STATUS_LOAD_SUCCESS);
+				intent.putExtra("data", data);
+				sendBroadcast(intent);
+				loadb = false;
+			}
+
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+				loadb = false;
 			}
 		});
 	}
@@ -177,14 +320,18 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 				Intent intent = new Intent(AKeys.DEVICE_BASIC_INFO_LOAD_SUCCESS);
 				intent.putExtra("data", data);
 				sendBroadcast(intent);
+				//ToastUtil.show(AlternatorRealtimeActivity.this, "数据已更新", true);
 				new Handler().postDelayed(new Runnable() {
 
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
+						if (isFinishing()) {
+							return;
+						}
 						getRealTimeData();
 					}
-				}, 1000);
+				}, REFRESH_TIME);
 			}
 
 			@Override
@@ -196,9 +343,38 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
+						if (isFinishing()) {
+							return;
+						}
 						getRealTimeData();
 					}
-				}, 1000);
+				}, REFRESH_TIME);
+			}
+		});
+	}
+
+	private void getRealTimeDataSingle() {
+		if (loada) {
+			return;
+		}
+		loada = true;
+		AlternatorRequest.getDeviceInfo(id, new AlternatorCallBack() {
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+				basicModel = new Gson().fromJson(data, DeviceBasicModel.class);
+				Intent intent = new Intent(AKeys.DEVICE_BASIC_INFO_LOAD_SUCCESS);
+				intent.putExtra("data", data);
+				sendBroadcast(intent);
+				loada = false;
+			}
+
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+				loada = false;
 			}
 		});
 	}
@@ -330,9 +506,27 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 	}
 
 	@Override
-	public DeviceBasicModel getModel() {
+	public DeviceBasicModel getModel1() {
 		// TODO Auto-generated method stub
 		return basicModel;
+	}
+
+	@Override
+	public DeviceAlarmModel getModel2() {
+		// TODO Auto-generated method stub
+		return alarmModel;
+	}
+
+	@Override
+	public DeviceIOModel getModel3() {
+		// TODO Auto-generated method stub
+		return ioModel;
+	}
+
+	@Override
+	public DeviceStatusModel getModel4() {
+		// TODO Auto-generated method stub
+		return statusModel;
 	}
 
 }

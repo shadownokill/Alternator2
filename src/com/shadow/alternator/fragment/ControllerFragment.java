@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -55,6 +56,7 @@ public class ControllerFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View v = inflater.inflate(R.layout.fragment_controller, null);
+		v.setBackgroundColor(Color.parseColor("#1b1b1b"));
 		text_detail = (TextView) v.findViewById(R.id.text_detail);
 		text_detail.setOnClickListener(new OnClickListener() {
 
@@ -64,6 +66,8 @@ public class ControllerFragment extends Fragment {
 				startActivity(new Intent(getActivity(), AlternatorRealTimeDetailActivity.class));
 			}
 		});
+		Intent intent = new Intent(AKeys.DEVICE_REQUEST_REFRESH);
+		getActivity().sendBroadcast(intent);
 		return v;
 	}
 

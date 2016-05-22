@@ -22,6 +22,14 @@ import com.shadow.alternator.bean.DeviceIOModel;
 public class RealTimeDetail4Fragment extends Fragment {
 	private RelativeLayout rlayout;
 	private TextView text_detail;
+	private TextView text_oil;
+	private TextView text_start;
+	private TextView text_1;
+	private TextView text_2;
+	private TextView text_3;
+	private TextView text_4;
+	private TextView text_5;
+	private TextView text_6;
 
 	BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 
@@ -35,6 +43,47 @@ public class RealTimeDetail4Fragment extends Fragment {
 	};
 
 	private void updateData(DeviceIOModel basicModel) {
+		if (basicModel.in_custom1 == 1) {
+			text_1.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_1.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom2 == 1) {
+			text_2.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_2.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom3 == 1) {
+			text_3.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_3.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom4 == 1) {
+			text_4.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_4.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom5 == 1) {
+			text_5.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_5.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom6 == 1) {
+			text_6.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_6.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+
+		if (basicModel.out_oil == 1) {
+			text_oil.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_oil.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.des_maint == 1) {
+			text_start.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_start.setBackgroundResource(R.drawable.bg_circle_off);
+		}
 	}
 
 	@Override
@@ -56,6 +105,15 @@ public class RealTimeDetail4Fragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View v = inflater.inflate(R.layout.fragment_realtime_detail4, null);
+
+		text_oil = (TextView) v.findViewById(R.id.text_oil);
+		text_start = (TextView) v.findViewById(R.id.text_start);
+		text_1 = (TextView) v.findViewById(R.id.text_1);
+		text_2 = (TextView) v.findViewById(R.id.text_2);
+		text_3 = (TextView) v.findViewById(R.id.text_3);
+		text_4 = (TextView) v.findViewById(R.id.text_4);
+		text_5 = (TextView) v.findViewById(R.id.text_5);
+		text_6 = (TextView) v.findViewById(R.id.text_6);
 		rlayout = (RelativeLayout) v.findViewById(R.id.rlayout);
 		text_detail = (TextView) v.findViewById(R.id.text_detail);
 		text_detail.setOnClickListener(new OnClickListener() {
@@ -66,6 +124,8 @@ public class RealTimeDetail4Fragment extends Fragment {
 				getActivity().finish();
 			}
 		});
+		Intent intent = new Intent(AKeys.DEVICE_REQUEST_REFRESH);
+		getActivity().sendBroadcast(intent);
 		return v;
 	}
 

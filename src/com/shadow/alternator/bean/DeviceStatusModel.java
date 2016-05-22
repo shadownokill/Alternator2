@@ -24,7 +24,7 @@ public class DeviceStatusModel {
     /// <summary>
     /// 综合报警灯
     /// </summary>
-    public int led_comprehensive; //{ get; set; }
+    public int led_comprehensive; //{ get; set; } 第五个 0-灰色 
     /// <summary>
     /// 机组正常灯闪标志
     /// </summary>
@@ -36,39 +36,43 @@ public class DeviceStatusModel {
     /// <summary>
     /// 综合报警正常闪标志
     /// </summary>
-    public int led_flicker_normalcomp; //{ get; set; }
+    // 0 灭 1 常亮 2常闪
+    public int led_flicker_normalcomp; //{ get; set; } 第五个 闪烁  a =1 && b = 0 红灯常量  a =b = 1红灯常扇
     /// <summary>
     /// 停机灯
     /// </summary>
-    public int led_stop; //{ get; set; }
+    public int led_stop; //{ get; set; } 第一个
     /// <summary>
     /// 手动灯
     /// </summary>
-    public int led_manual; //{ get; set; }
+    public int led_manual; //{ get; set; } 第二个
     /// <summary>
     /// 自动灯
     /// </summary>
-    public int led_auto; //{ get; set; }
+    public int led_auto; //{ get; set; } 第三个
     /// <summary>
     /// 测试灯
     /// </summary>
-    public int led_test; //{ get; set; }
+    public int led_test; //{ get; set; } 第四个
+    
+    //
+    
     /// <summary>
     /// 发电机组正常灯
     /// </summary>
-    public int led_normal_gen; //{ get; set; }
+    public int led_normal_gen; //{ get; set; } 左上 1
     /// <summary>
     /// 机组合闸灯
     /// </summary>
-    public int led_close_units; //{ get; set; }
+    public int led_close_units; //{ get; set; } 左二 
     /// <summary>
     /// 市电合闸灯
     /// </summary>
-    public int led_close_main; //{ get; set; }
+    public int led_close_main; //{ get; set; } 右二
     /// <summary>
     /// 市电正常灯
     /// </summary>
-    public int led_normal_main; //{ get; set; }
+    public int led_normal_main; //{ get; set; } 右上1
     /// <summary>
     /// 停机延时
     /// </summary>

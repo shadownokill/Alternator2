@@ -106,6 +106,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/text_oil"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"
@@ -144,6 +145,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/text_start"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"
@@ -182,6 +184,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/text_1"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"
@@ -220,6 +223,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/text_2"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"
@@ -258,6 +262,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/text_3"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"
@@ -296,6 +301,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/text_4"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"
@@ -334,6 +340,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/text_5"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"
@@ -372,6 +379,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/text_6"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center_vertical"

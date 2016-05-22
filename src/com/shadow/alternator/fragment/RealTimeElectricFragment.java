@@ -105,6 +105,8 @@ public class RealTimeElectricFragment extends Fragment {
 				startActivity(new Intent(getActivity(), AlternatorRealTimeDetailActivity.class));
 			}
 		});
+		Intent intent = new Intent(AKeys.DEVICE_REQUEST_REFRESH);
+		getActivity().sendBroadcast(intent);
 		return v;
 	}
 

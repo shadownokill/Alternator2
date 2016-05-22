@@ -10,7 +10,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="10dp"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/icon_al" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,12 +54,14 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:background="@drawable/selector_white_light2deep"
-            android:src="@drawable/logo" />
+            android:scaleType="center"
+            android:src="@drawable/icon_a1" />
 
         <TextView
             android:layout_width="1dp"
             android:layout_height="10dp"
-            android:background="#f3f3f3" />
+            android:background="#f3f3f3"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/img_a2"
@@ -67,12 +69,15 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:background="@drawable/selector_white_light2deep"
-            android:src="@drawable/logo" />
+            android:scaleType="center"
+            android:src="@drawable/icon_a2"
+            android:visibility="gone" />
 
         <TextView
             android:layout_width="1dp"
             android:layout_height="10dp"
-            android:background="#f3f3f3" />
+            android:background="#f3f3f3"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/img_a3"
@@ -80,7 +85,9 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:background="@drawable/selector_white_light2deep"
-            android:src="@drawable/logo" />
+            android:scaleType="center"
+            android:src="@drawable/icon_a3"
+            android:visibility="gone" />
     </LinearLayout>
 
     <TextView

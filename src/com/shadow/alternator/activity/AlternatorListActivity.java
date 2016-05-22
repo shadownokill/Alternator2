@@ -200,7 +200,7 @@ public class AlternatorListActivity extends BaseActivity {
 			} else {
 				holder = (Holder) convertView.getTag();
 			}
-			holder.img_icon.setImageResource(R.drawable.logo);
+			holder.img_icon.setImageResource(R.drawable.icon_al);
 			holder.text_name.setText(infos.get(position).dev_name);
 			holder.text_ip.setText(infos.get(position).dev_addr);
 			holder.img_a1.setOnClickListener(new OnClickListener() {
