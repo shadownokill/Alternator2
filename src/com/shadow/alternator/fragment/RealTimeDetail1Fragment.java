@@ -55,9 +55,9 @@ public class RealTimeDetail1Fragment extends Fragment {
 
 	private void updateData(DeviceBasicModel basicModel) {
 		text_value1.setText(basicModel.DES_SPEED+"");
-		text_value2.setText(basicModel.DES_WATER_TEMP+"");
+		text_value2.setText(basicModel.DES_WATER_TEMP_Format+"");
 		text_value3.setText(basicModel.DES_LUB_PREESURE_Format+"");
-		text_value4.setText(basicModel.DES_FUEL_LEVEL+"");
+		text_value4.setText(basicModel.DES_FUEL_LEVEL_Format+"");
 		text_value5.setText(basicModel.DES_BATT_VOLT_Format+"");
 		text_value6.setText(basicModel.DES_CHARGE_VOLT_Format+"");
 		text_value7.setText(basicModel.OIL_DES_HOUR+":"+basicModel.OIL_DES_MIN);

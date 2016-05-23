@@ -8,7 +8,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -27,25 +26,32 @@
                 android:src="@drawable/icon_generator" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_connection" />
+                android:layout_width="2dp"
+                android:layout_height="5dp"
+                android:background="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/img_l1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_circle_off" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:orientation="horizontal" >
 
             <ImageView
                 android:layout_width="15dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:src="@drawable/icon_close_open" />
 
             <ImageView
                 android:layout_width="20dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:src="@drawable/icon_co" />
         </LinearLayout>
 
@@ -62,26 +68,33 @@
                 android:src="@drawable/icon_load" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_connection_center" />
+                android:layout_width="2dp"
+                android:layout_height="15dp"
+                android:background="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/img_l3"
+                android:layout_width="10dp"
+                android:visibility="gone"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_circle_off" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="right|center_vertical"
             android:orientation="horizontal" >
 
             <ImageView
                 android:layout_width="20dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:src="@drawable/icon_co" />
 
             <ImageView
                 android:layout_width="15dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:src="@drawable/icon_close_open" />
         </LinearLayout>
 
@@ -98,109 +111,147 @@
                 android:src="@drawable/icon_mains" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_connection" />
+                android:layout_width="2dp"
+                android:layout_height="5dp"
+                android:background="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/img_l5"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_circle_off" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" >
-        <ImageView 
-            android:id="@+id/img"
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/icon_connection_left"
-            />
-        <ImageView 
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/img_1"
+                android:layout_width="2dp"
+                android:layout_height="5dp"
+                android:layout_centerHorizontal="true"
+                android:background="#FFFFFF" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignLeft="@+id/img_1"
+                android:layout_below="@+id/img_1"
+                android:background="#FFFFFF" />
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/icon_connection_left"
-            />
-    </LinearLayout>
+            android:orientation="horizontal" >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@color/deep_blue2" />
+            <ImageView
+                android:id="@+id/img_l2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_circle_off" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp" >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/img_2"
+                android:layout_width="2dp"
+                android:layout_height="5dp"
+                android:layout_centerHorizontal="true"
+                android:background="#FFFFFF" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/img_2"
+                android:background="#FFFFFF" />
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_weight="1"
+            android:orientation="horizontal" >
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logo" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_toLeftOf="@+id/img_3"
+                android:background="#FFFFFF" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/logo" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/img_l4"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/logo" />
+                android:background="@drawable/bg_circle_off" />
         </RelativeLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/img_4"
+                android:layout_width="2dp"
+                android:layout_height="5dp"
+                android:layout_centerHorizontal="true"
+                android:background="#FFFFFF" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignRight="@+id/img_4"
+                android:layout_below="@+id/img_4"
+                android:background="#FFFFFF" />
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:visibility="gone" >
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" >
 
-            <TextView
+            <ImageView
+                android:id="@+id/img_c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:drawablePadding="5dp"
-                android:drawableTop="@drawable/logo"
-                android:gravity="center"
-                android:text="开闸\nOPEN"
-                android:textColor="#FFFFFF" />
+                android:src="@drawable/icon_c1" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -208,15 +259,64 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" >
 
-            <TextView
+            <ImageView
+                android:id="@+id/img_c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:drawablePadding="5dp"
-                android:drawableTop="@drawable/logo"
-                android:gravity="center"
-                android:text="合闸\nCLOSE"
-                android:textColor="#FFFFFF" />
+                android:src="@drawable/icon_c2" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/img_c3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_c3" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/img_c4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_c4" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/img_c5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_c5" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/img_c6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_c6" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -239,7 +339,7 @@
                 android:background="@drawable/selector_data"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="查看图表显示"
+                android:text="查看详细数据"
                 android:textColor="@color/light_blue"
                 android:textSize="16sp" />
         </RelativeLayout>

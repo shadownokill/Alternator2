@@ -78,6 +78,7 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 		getWarings();
 		getIO();
 		getStatus();
+		getRealTimeStatus();
 	}
 
 	BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -101,6 +102,7 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 		getWaringsSingle();
 		getIOSingle();
 		getStatusSingle();
+		getRealTimeStatusSingle();
 	}
 
 	private void getWarings() {
@@ -248,7 +250,7 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 				// TODO Auto-generated method stub
 				super.onSuccess(data);
 
-				Intent intent = new Intent(AKeys.DEVICE_STATUS_LOAD_SUCCESS);
+				Intent intent = new Intent(AKeys.DEVICE_IO_LOAD_SUCCESS);
 				intent.putExtra("data", data);
 				sendBroadcast(intent);
 
@@ -295,7 +297,7 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 				// TODO Auto-generated method stub
 				super.onSuccess(data);
 
-				Intent intent = new Intent(AKeys.DEVICE_STATUS_LOAD_SUCCESS);
+				Intent intent = new Intent(AKeys.DEVICE_IO_LOAD_SUCCESS);
 				intent.putExtra("data", data);
 				sendBroadcast(intent);
 				loadb = false;
@@ -310,17 +312,33 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 		});
 	}
 
-	private void getRealTimeData() {
-		AlternatorRequest.getDeviceInfo(id, new AlternatorCallBack() {
+	private void getRealTimeStatus() {
+		AlternatorRequest.getDeviceStatus(id, new AlternatorCallBack() {
 			@Override
 			public void onSuccess(String data) throws Exception {
 				// TODO Auto-generated method stub
 				super.onSuccess(data);
-				basicModel = new Gson().fromJson(data, DeviceBasicModel.class);
-				Intent intent = new Intent(AKeys.DEVICE_BASIC_INFO_LOAD_SUCCESS);
+				Intent intent = new Intent(AKeys.DEVICE_STATUS_LOAD_SUCCESS);
 				intent.putExtra("data", data);
 				sendBroadcast(intent);
 				//ToastUtil.show(AlternatorRealtimeActivity.this, "数据已更新", true);
+				new Handler().postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						if (isFinishing()) {
+							return;
+						}
+						getRealTimeStatus();
+					}
+				}, REFRESH_TIME);
+			}
+
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
 				new Handler().postDelayed(new Runnable() {
 
 					@Override
@@ -333,13 +351,57 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 					}
 				}, REFRESH_TIME);
 			}
-
+		});
+	}
+	private void getRealTimeStatusSingle() {
+		AlternatorRequest.getDeviceStatus(id, new AlternatorCallBack() {
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+				Intent intent = new Intent(AKeys.DEVICE_STATUS_LOAD_SUCCESS);
+				intent.putExtra("data", data);
+				sendBroadcast(intent);
+				//ToastUtil.show(AlternatorRealtimeActivity.this, "数据已更新", true);
+			}
+			
+			@Override
+			public void onError(int type, int code, String msg) {
+				// TODO Auto-generated method stub
+				super.onError(type, code, msg);
+			}
+		});
+	}
+	private void getRealTimeData() {
+		AlternatorRequest.getDeviceInfo(id, new AlternatorCallBack() {
+			@Override
+			public void onSuccess(String data) throws Exception {
+				// TODO Auto-generated method stub
+				super.onSuccess(data);
+				basicModel = new Gson().fromJson(data, DeviceBasicModel.class);
+				Intent intent = new Intent(AKeys.DEVICE_BASIC_INFO_LOAD_SUCCESS);
+				intent.putExtra("data", data);
+				sendBroadcast(intent);
+				//ToastUtil.show(AlternatorRealtimeActivity.this, "数据已更新", true);
+				new Handler().postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						if (isFinishing()) {
+							return;
+						}
+						getRealTimeData();
+					}
+				}, REFRESH_TIME);
+			}
+			
 			@Override
 			public void onError(int type, int code, String msg) {
 				// TODO Auto-generated method stub
 				super.onError(type, code, msg);
 				new Handler().postDelayed(new Runnable() {
-
+					
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub

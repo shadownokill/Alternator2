@@ -25,6 +25,9 @@ public class DeviceStatusModel {
     /// 综合报警灯
     /// </summary>
     public int led_comprehensive; //{ get; set; } 第五个 0-灰色 
+    
+    public int led_comprehensive_format;
+    
     /// <summary>
     /// 机组正常灯闪标志
     /// </summary>

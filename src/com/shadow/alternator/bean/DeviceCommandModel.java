@@ -9,11 +9,13 @@ public class DeviceCommandModel {
 	// / <summary>
 	// / 命令编号
 	// / </summary>
-	public String cmd_id;// { get; set; }
+	public int cmd_id;// { get; set; }
 
 	// / <summary>
 	// / 具体命令
 	// / </summary>
 	public int code;// { get; set; }
+	
+	//public int ret;
 
 }

@@ -198,10 +198,13 @@ public class DeviceBasicModel {
 	// / 水温 -32768=断线
 	// / </summary>
 	public int DES_WATER_TEMP;// { get; set; }
+	public String DES_WATER_TEMP_Format;
 	// / <summary>
 	// / 油位 -32768=断线
 	// / </summary>
 	public int DES_FUEL_LEVEL;// { get; set; }
+	
+	public String DES_FUEL_LEVEL_Format;
 	// / <summary>
 	// / 油压
 	// / </summary>

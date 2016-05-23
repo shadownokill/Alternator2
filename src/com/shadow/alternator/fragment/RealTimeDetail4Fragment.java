@@ -20,16 +20,29 @@ import com.shadow.alternator.R;
 import com.shadow.alternator.bean.DeviceIOModel;
 
 public class RealTimeDetail4Fragment extends Fragment {
+	private TextView text_i1;
+	private TextView text_o1;
+	private TextView text_i0;
+	private TextView text_o0;
+	private TextView text_i2;
+	private TextView text_o2;
+	private TextView text_i3;
+	private TextView text_o3;
+	private TextView text_i4;
+	private TextView text_o4;
+	private TextView text_i5;
+//	private TextView text_o5;
+	private TextView text_os;
+	private TextView text_i6;
+	private TextView text_o6;
+	private TextView text_i7;
+	private TextView text_o7;
+	private TextView text_i8;
+	private TextView text_o8;
 	private RelativeLayout rlayout;
 	private TextView text_detail;
-	private TextView text_oil;
-	private TextView text_start;
-	private TextView text_1;
-	private TextView text_2;
-	private TextView text_3;
-	private TextView text_4;
-	private TextView text_5;
-	private TextView text_6;
+	
+
 
 	BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 
@@ -43,46 +56,83 @@ public class RealTimeDetail4Fragment extends Fragment {
 	};
 
 	private void updateData(DeviceIOModel basicModel) {
-		if (basicModel.in_custom1 == 1) {
-			text_1.setBackgroundResource(R.drawable.bg_circle_on);
+		if (basicModel.in_alarm_stopemerg == 1) {
+			text_i0.setBackgroundResource(R.drawable.bg_circle_on);
 		} else {
-			text_1.setBackgroundResource(R.drawable.bg_circle_off);
+			text_i0.setBackgroundResource(R.drawable.bg_circle_off);
 		}
-		if (basicModel.in_custom2 == 1) {
-			text_2.setBackgroundResource(R.drawable.bg_circle_on);
-		} else {
-			text_2.setBackgroundResource(R.drawable.bg_circle_off);
-		}
-		if (basicModel.in_custom3 == 1) {
-			text_3.setBackgroundResource(R.drawable.bg_circle_on);
-		} else {
-			text_3.setBackgroundResource(R.drawable.bg_circle_off);
-		}
-		if (basicModel.in_custom4 == 1) {
-			text_4.setBackgroundResource(R.drawable.bg_circle_on);
-		} else {
-			text_4.setBackgroundResource(R.drawable.bg_circle_off);
-		}
-		if (basicModel.in_custom5 == 1) {
-			text_5.setBackgroundResource(R.drawable.bg_circle_on);
-		} else {
-			text_5.setBackgroundResource(R.drawable.bg_circle_off);
-		}
-		if (basicModel.in_custom6 == 1) {
-			text_6.setBackgroundResource(R.drawable.bg_circle_on);
-		} else {
-			text_6.setBackgroundResource(R.drawable.bg_circle_off);
-		}
-
 		if (basicModel.out_oil == 1) {
-			text_oil.setBackgroundResource(R.drawable.bg_circle_on);
+			text_o0.setBackgroundResource(R.drawable.bg_circle_on);
 		} else {
-			text_oil.setBackgroundResource(R.drawable.bg_circle_off);
+			text_o0.setBackgroundResource(R.drawable.bg_circle_off);
 		}
 		if (basicModel.des_maint == 1) {
-			text_start.setBackgroundResource(R.drawable.bg_circle_on);
+			text_os.setBackgroundResource(R.drawable.bg_circle_on);
 		} else {
-			text_start.setBackgroundResource(R.drawable.bg_circle_off);
+			text_os.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom1 == 1) {
+			text_i1.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_i1.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom2 == 1) {
+			text_i2.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_i2.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom3 == 1) {
+			text_i3.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_i3.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom4 == 1) {
+			text_i4.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_i4.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom5 == 1) {
+			text_i5.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_i5.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom6 == 1) {
+			text_i6.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_i6.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom7 == 1) {
+			text_i7.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_i7.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.in_custom8 == 1) {
+			text_i8.setBackgroundResource(R.drawable.bg_circle_on);
+		} else {
+			text_i8.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+
+		
+		
+		if (basicModel.out_custom1 == 1) {
+			text_o1.setBackgroundResource(R.drawable.bg_circle_on);
+		}else {
+			text_o1.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.out_custom2 == 1) {
+			text_o2.setBackgroundResource(R.drawable.bg_circle_on);
+		}else {
+			text_o2.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.out_custom3 == 1) {
+			text_o3.setBackgroundResource(R.drawable.bg_circle_on);
+		}else {
+			text_o3.setBackgroundResource(R.drawable.bg_circle_off);
+		}
+		if (basicModel.out_custom4 == 1) {
+			text_o4.setBackgroundResource(R.drawable.bg_circle_on);
+		}else {
+			text_o4.setBackgroundResource(R.drawable.bg_circle_off);
 		}
 	}
 
@@ -106,14 +156,25 @@ public class RealTimeDetail4Fragment extends Fragment {
 		// TODO Auto-generated method stub
 		View v = inflater.inflate(R.layout.fragment_realtime_detail4, null);
 
-		text_oil = (TextView) v.findViewById(R.id.text_oil);
-		text_start = (TextView) v.findViewById(R.id.text_start);
-		text_1 = (TextView) v.findViewById(R.id.text_1);
-		text_2 = (TextView) v.findViewById(R.id.text_2);
-		text_3 = (TextView) v.findViewById(R.id.text_3);
-		text_4 = (TextView) v.findViewById(R.id.text_4);
-		text_5 = (TextView) v.findViewById(R.id.text_5);
-		text_6 = (TextView) v.findViewById(R.id.text_6);
+		text_i1 = (TextView) v.findViewById(R.id.text_i1);
+		text_o1 = (TextView) v.findViewById(R.id.text_o1);
+		text_i0 = (TextView) v.findViewById(R.id.text_i0);
+		text_o0 = (TextView) v.findViewById(R.id.text_o0);
+		text_i2 = (TextView) v.findViewById(R.id.text_i2);
+		text_o2 = (TextView) v.findViewById(R.id.text_o2);
+		text_i3 = (TextView) v.findViewById(R.id.text_i3);
+		text_o3 = (TextView) v.findViewById(R.id.text_o3);
+		text_i4 = (TextView) v.findViewById(R.id.text_i4);
+		text_o4 = (TextView) v.findViewById(R.id.text_o4);
+		text_i5 = (TextView) v.findViewById(R.id.text_i5);
+		//text_o5 = (TextView) v.findViewById(R.id.text_o5);
+		text_os = (TextView) v.findViewById(R.id.text_os);
+		text_i6 = (TextView) v.findViewById(R.id.text_i6);
+		text_o6 = (TextView) v.findViewById(R.id.text_o6);
+		text_i7 = (TextView) v.findViewById(R.id.text_i7);
+		text_o7 = (TextView) v.findViewById(R.id.text_o7);
+		text_i8 = (TextView) v.findViewById(R.id.text_i8);
+		text_o8 = (TextView) v.findViewById(R.id.text_o8);
 		rlayout = (RelativeLayout) v.findViewById(R.id.rlayout);
 		text_detail = (TextView) v.findViewById(R.id.text_detail);
 		text_detail.setOnClickListener(new OnClickListener() {
