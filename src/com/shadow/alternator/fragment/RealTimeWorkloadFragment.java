@@ -53,16 +53,16 @@ public class RealTimeWorkloadFragment extends Fragment {
 		int degreeStart = -95;
 		float speedperdegree = max / degree;
 		int d = (int) (speed / speedperdegree);
-		if (d+ degreeStart > 170) {
+		if (d + degreeStart > 170) {
 			d = 265;
 		}
 		img_pointer.setRotation(d + degreeStart);
 
-		setData(rlayout_1, "", -1, (int) ((StringTool.str2double(basicModel.OIL_ACTIVEPOWER_A_Format, 0.0) / 60f)*100));
-		setData(rlayout_2, "", -1, (int) ((StringTool.str2double(basicModel.OIL_ACTIVEPOWER_B_Format, 0.0) / 60f))*100);
-		setData(rlayout_3, "", -1, (int) ((StringTool.str2double(basicModel.OIL_ACTIVEPOWER_C_Format, 0.0) / 60f))*100);
-		setData(rlayout_4, "PF(功率因素)", "", basicModel.OIL_COS_Format+"");
-		setData(rlayout_5, "S(视在功率)", "", basicModel.OIL_APPARENTPOWER_TOTAL_Format+"");
+		setData(rlayout_1, basicModel.OIL_ACTIVEPOWER_A_Format + "kW", -1, (int) ((StringTool.str2double(basicModel.OIL_ACTIVEPOWER_A_Format, 0.0) / 60f) * 100));
+		setData(rlayout_2, basicModel.OIL_ACTIVEPOWER_B_Format + "kW", -1, (int) ((StringTool.str2double(basicModel.OIL_ACTIVEPOWER_B_Format, 0.0) / 60f)) * 100);
+		setData(rlayout_3, basicModel.OIL_ACTIVEPOWER_C_Format + "kW", -1, (int) ((StringTool.str2double(basicModel.OIL_ACTIVEPOWER_C_Format, 0.0) / 60f)) * 100);
+		setData(rlayout_4, "PF(功率因素)", "", basicModel.OIL_COS_Format + "");
+		setData(rlayout_5, "S(视在功率)", "", basicModel.OIL_APPARENTPOWER_TOTAL_Format + "");
 	}
 
 	@Override
@@ -93,9 +93,9 @@ public class RealTimeWorkloadFragment extends Fragment {
 		rlayout_4 = (RelativeLayout) v.findViewById(R.id.rlayout_4);
 		rlayout_5 = (RelativeLayout) v.findViewById(R.id.rlayout_5);
 		text_detail = (TextView) v.findViewById(R.id.text_detail);
-		setData(rlayout_1, "", -1, 0);
-		setData(rlayout_2, "", -1, 0);
-		setData(rlayout_3, "", -1, 0);
+		setData(rlayout_1, "0.0kW", -1, 0);
+		setData(rlayout_2, "0.0kW", -1, 0);
+		setData(rlayout_3, "0.0kW", -1, 0);
 		setData(rlayout_4, "PF(功率因素)", "", "----");
 		setData(rlayout_5, "S(视在功率)", "", "----");
 		text_detail.setOnClickListener(new OnClickListener() {

@@ -53,8 +53,8 @@ public class RealtimeEngineFragment extends Fragment {
 		float speedperdegree = max / degree;
 		int d = (int) (speed / speedperdegree);
 		img_pointer.setRotation(d + degreeStart);
-		setData(rlayout_1, "----", R.drawable.icon_shuiwen, (int)(basicModel.DES_WATER_TEMP/120.0f) , RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_2, "####", R.drawable.icon_youwei, basicModel.DES_FUEL_LEVEL, RelativeLayout.ALIGN_PARENT_BOTTOM);
+		setData(rlayout_1, (basicModel.DES_WATER_TEMP == 32768?"+++":(basicModel.DES_WATER_TEMP+""))+"℃", R.drawable.icon_shuiwen, (int)(basicModel.DES_WATER_TEMP/120.0f) , RelativeLayout.ALIGN_PARENT_BOTTOM);
+		setData(rlayout_2, basicModel.DES_FUEL_LEVEL_Format + "%", R.drawable.icon_youwei, basicModel.DES_FUEL_LEVEL, RelativeLayout.ALIGN_PARENT_BOTTOM);
 		setData(rlayout_3, basicModel.DES_LUB_PREESURE_Format+"kPa", R.drawable.icon_youya, (int)(StringTool.str2double(basicModel.DES_LUB_PREESURE_Format, 0.0)/1000f), RelativeLayout.ALIGN_PARENT_BOTTOM);//\n("+basicModel.DES_LUB_PREESURE+"Bar)
 		setData(rlayout_4, basicModel.DES_BATT_VOLT_Format+"V", R.drawable.icon_dianchi, (int)((StringTool.str2double(basicModel.DES_BATT_VOLT_Format, 0.0)/60f)*100), RelativeLayout.ALIGN_PARENT_LEFT);
 		setData(rlayout_5, basicModel.DES_CHARGE_VOLT_Format+"V", R.drawable.icon_chongdian, (int)((StringTool.str2double(basicModel.DES_CHARGE_VOLT_Format, 0.0)/60f)*100), RelativeLayout.ALIGN_PARENT_LEFT);
@@ -91,7 +91,7 @@ public class RealtimeEngineFragment extends Fragment {
 		img_pointer.setRotation(-120);
 		setData(rlayout_1, "----", R.drawable.icon_shuiwen, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
 		setData(rlayout_2, "####", R.drawable.icon_youwei, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
-		setData(rlayout_3, "0kPa\n(0.0Bar)", R.drawable.icon_youya, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
+		setData(rlayout_3, "0kPa", R.drawable.icon_youya, 0, RelativeLayout.ALIGN_PARENT_BOTTOM);
 		setData(rlayout_4, "V", R.drawable.icon_dianchi, 0, RelativeLayout.ALIGN_PARENT_LEFT);
 		setData(rlayout_5, "V", R.drawable.icon_chongdian, 0, RelativeLayout.ALIGN_PARENT_LEFT);
 		text_detail.setOnClickListener(new OnClickListener() {
