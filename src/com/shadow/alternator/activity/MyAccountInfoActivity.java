@@ -35,7 +35,11 @@ import com.shadow.alternator.util.StringTool;
 import com.shadow.alternator.util.ToastUtil;
 import com.shadow.alternator.util.WindowLoading;
 import com.squareup.picasso.Picasso;
-
+/**
+ * 账号信息
+ * @author 林知礼
+ *
+ */
 public class MyAccountInfoActivity extends BaseActivity {
 	private EditText edit;
 	private TextView text_hint;
@@ -65,6 +69,9 @@ public class MyAccountInfoActivity extends BaseActivity {
 		}
 	}
 
+	/**
+	 * 获取账号公司信息
+	 */
 	private void getCompanyInfo() {
 		AlternatorCallBack callBack = new AlternatorCallBack() {
 			@Override
@@ -95,6 +102,9 @@ public class MyAccountInfoActivity extends BaseActivity {
 		text_hint = (TextView) findViewById(R.id.text_hint);
 		list = (ListView) findViewById(R.id.list);
 		bindTitle();
+		/**
+		 * 点击左上角菜单功能为退出账号
+		 */
 		title.text_left.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.menu), null, null, null);
 		title.text_left.setOnClickListener(new OnClickListener() {
 

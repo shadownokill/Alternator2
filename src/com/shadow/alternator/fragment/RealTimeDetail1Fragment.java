@@ -19,6 +19,12 @@ import com.shadow.alternator.AKeys;
 import com.shadow.alternator.R;
 import com.shadow.alternator.bean.DeviceBasicModel;
 
+/**
+ * 实时信息详细数据
+ * 发电机
+ * @author 林知礼
+ *
+ */
 public class RealTimeDetail1Fragment extends Fragment {
 	private TextView text_value1;
 	private TextView text_value2;

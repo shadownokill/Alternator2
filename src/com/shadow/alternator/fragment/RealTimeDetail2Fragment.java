@@ -19,7 +19,12 @@ import com.google.gson.Gson;
 import com.shadow.alternator.AKeys;
 import com.shadow.alternator.R;
 import com.shadow.alternator.bean.DeviceBasicModel;
-
+/**
+ * 实时信息详细数据
+ * 发电/市电
+ * @author 林知礼
+ *
+ */
 public class RealTimeDetail2Fragment extends Fragment {
 	private TextView text_1;
 	private TextView text_2;
