@@ -27,6 +27,11 @@ import com.shadow.alternator.util.StringTool;
  interface GetModel{
 	public DeviceModel getModel();
 }
+ /**
+  *  发电机组详情
+  * @author 林知礼
+  *
+  */
 public class AlternatorDetailActivity extends BaseActivity implements GetModel{
 
 	

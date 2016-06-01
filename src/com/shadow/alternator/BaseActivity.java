@@ -7,7 +7,12 @@ import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
 
 import com.shadow.alternator.util.ToastUtil;
-
+/**
+ * activity基类
+ * 主要方便页面标题绑定
+ * @author 林知礼
+ *
+ */
 public class BaseActivity extends FragmentActivity {
 	public Title title;
 	@Override

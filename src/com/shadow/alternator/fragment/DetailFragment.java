@@ -18,6 +18,11 @@ import com.shadow.alternator.activity.AlternatorDetailActivity;
 import com.shadow.alternator.activity.AlternatorDetailActivity.AlternatorDetail;
 import com.shadow.alternator.bean.DeviceModel;
 
+/**
+ * 设备详情单页
+ * @author 林知礼
+ *
+ */
 public class DetailFragment extends Fragment {
 
 	private ListView list;
@@ -34,6 +39,10 @@ public class DetailFragment extends Fragment {
 		super.onDestroy();
 	}
 
+	/**
+	 * 发电机
+	 * @param model
+	 */
 	private void p0(DeviceModel model) {
 		ArrayList<AlternatorDetail> data = new ArrayList<AlternatorDetail>();
 		AlternatorDetail a1 = new AlternatorDetail();
@@ -80,6 +89,10 @@ public class DetailFragment extends Fragment {
 		list.setAdapter(adapter);
 	}
 
+	/**
+	 * 发动机
+	 * @param model
+	 */
 	private void p1(DeviceModel model) {
 
 		ArrayList<AlternatorDetail> data = new ArrayList<AlternatorDetail>();

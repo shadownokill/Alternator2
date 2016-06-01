@@ -28,7 +28,11 @@ import com.shadow.alternator.request.AlternatorRequest;
 import com.shadow.alternator.util.StringTool;
 import com.shadow.alternator.util.ToastUtil;
 import com.shadow.alternator.util.WindowLoading;
-
+/**
+ * 控制器页面
+ * @author 林知礼
+ *
+ */
 public class ControllerFragment extends Fragment {
 
 	private ImageView img_l1;
@@ -66,26 +70,31 @@ public class ControllerFragment extends Fragment {
 	private DeviceStatusModel statusModel;
 
 	private void updateData(DeviceStatusModel basicModel) {
+		//停止
 		if (basicModel.led_stop == 1) {
 			img_c1.setImageResource(R.drawable.icon_c1_on);
 		} else {
 			img_c1.setImageResource(R.drawable.icon_c1);
 		}
+		//手动
 		if (basicModel.led_manual == 1) {
 			img_c2.setImageResource(R.drawable.icon_c2_on);
 		} else {
 			img_c2.setImageResource(R.drawable.icon_c2);
 		}
+		//自动
 		if (basicModel.led_auto == 1) {
 			img_c3.setImageResource(R.drawable.icon_c3_on);
 		} else {
 			img_c3.setImageResource(R.drawable.icon_c3);
 		}
+		//测试
 		if (basicModel.led_test == 1) {
 			img_c4.setImageResource(R.drawable.icon_c4_on);
 		} else {
 			img_c4.setImageResource(R.drawable.icon_c4);
 		}
+		//警报
 		if (basicModel.led_comprehensive_format == 1) {
 			img_c5.setImageResource(R.drawable.icon_c5_on);
 		} else if (basicModel.led_comprehensive_format == 0) {
@@ -130,6 +139,10 @@ public class ControllerFragment extends Fragment {
 	private boolean l1 = false, l2 = false, l3 = false;
 	private boolean r1 = false, r2 = false, r3 = false;
 
+	/**
+	 * 设置警报灯闪烁
+	 * @param basicModel
+	 */
 	private void shake(final DeviceStatusModel basicModel) {
 		if (basicModel.led_comprehensive_format == 1) {
 			img_c5.setImageResource(R.drawable.icon_c5_on);

@@ -9,7 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.ImageView;
-
+/**
+ * 开屏页
+ * @author 林知礼
+ *
+ */
 public class MainActivity extends Activity {
 
 	private ImageView img;

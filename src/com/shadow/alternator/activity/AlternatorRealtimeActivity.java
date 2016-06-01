@@ -48,7 +48,12 @@ interface GetBasicModel {
 
 	public DeviceStatusModel getModel4();
 }
-
+/**
+ * 实时信息
+ * 页面结构为ViewPager+Fragment
+ * @author 林知礼
+ *
+ */
 public class AlternatorRealtimeActivity extends BaseActivity implements GetBasicModel {
 
 	private HorizontalScrollView hsv_titles;
@@ -86,6 +91,7 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub
+			//由于刷新间隔修改为1s,无每次打开页面都刷新的必要,故注释
 			//update();
 		}
 	};
@@ -97,6 +103,9 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 		getActivity().unregisterReceiver(broadcastReceiver);
 	}
 
+	/**
+	 * 如果刷新间隔时间较长,调用此方法可立即刷新页面
+	 */
 	private void update() {
 		getRealTimeDataSingle();
 		getWaringsSingle();
@@ -105,6 +114,9 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 		getRealTimeStatusSingle();
 	}
 
+	/**
+	 * 获取警告信息
+	 */
 	private void getWarings() {
 		AlternatorRequest.getAlarms(id, new AlternatorCallBack() {
 			@Override
@@ -174,6 +186,9 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 		});
 	}
 
+	/**
+	 * 获取I/O信息
+	 */
 	private void getIO() {
 		AlternatorRequest.getDeviceIO(id, new AlternatorCallBack() {
 			@Override
@@ -243,6 +258,9 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 		});
 	}
 
+	/**
+	 * 获取控制器状态信息
+	 */
 	private void getStatus() {
 		AlternatorRequest.getDeviceIO(id, new AlternatorCallBack() {
 			@Override
@@ -311,7 +329,10 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 			}
 		});
 	}
-
+	
+	/**
+	 * 获取设备状态
+	 */
 	private void getRealTimeStatus() {
 		AlternatorRequest.getDeviceStatus(id, new AlternatorCallBack() {
 			@Override
@@ -372,6 +393,10 @@ public class AlternatorRealtimeActivity extends BaseActivity implements GetBasic
 			}
 		});
 	}
+	
+	/**
+	 * 获取设备基础信息
+	 */
 	private void getRealTimeData() {
 		AlternatorRequest.getDeviceInfo(id, new AlternatorCallBack() {
 			@Override

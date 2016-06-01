@@ -33,7 +33,11 @@ import com.shadow.alternator.request.AlternatorRequest;
 import com.shadow.alternator.util.StringTool;
 import com.shadow.alternator.util.ToastUtil;
 import com.shadow.alternator.util.WindowLoading;
-
+/**
+ * 设备列表
+ * @author 林知礼
+ *
+ */
 public class AlternatorListActivity extends BaseActivity {
 	private EditText edit;
 	private TextView text_hint;
@@ -52,6 +56,9 @@ public class AlternatorListActivity extends BaseActivity {
 		initView();
 	}
 
+	/**
+	 * 获取设备列表
+	 */
 	private void getDeviceList() {
 		AlternatorCallBack callBack = new AlternatorCallBack() {
 			@Override

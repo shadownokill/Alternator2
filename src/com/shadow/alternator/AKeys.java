@@ -1,5 +1,11 @@
 package com.shadow.alternator;
 
+/**
+ * 通用
+ * 广播Action
+ * @author 林知礼
+ *
+ */
 public class AKeys {
 
 	public static final String DEVICE_INFO_LOAD_SUCCESS = "device_info_load_success";

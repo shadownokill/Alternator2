@@ -19,6 +19,12 @@ import com.shadow.alternator.AKeys;
 import com.shadow.alternator.R;
 import com.shadow.alternator.bean.DeviceIOModel;
 
+/**
+ * 实时信息详细数据
+ * I/O状态
+ * @author 林知礼
+ *
+ */
 public class RealTimeDetail4Fragment extends Fragment {
 	private TextView text_i1;
 	private TextView text_o1;

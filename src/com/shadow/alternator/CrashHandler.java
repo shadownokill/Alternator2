@@ -29,7 +29,7 @@ import android.util.Log;
 
 /**
  * 
- * @author user
+ * @author 林知礼
  */
 public class CrashHandler implements UncaughtExceptionHandler {
 
@@ -43,13 +43,11 @@ public class CrashHandler implements UncaughtExceptionHandler {
 	private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 
 	/**
-	 * 淇濊瘉鍙湁涓�涓狢rashHandler瀹炰緥
 	 */
 	private CrashHandler() {
 	}
 
 	/**
-	 * 鑾峰彇CrashHandler瀹炰緥 ,鍗曚緥妯″紡
 	 */
 	public static CrashHandler getInstance() {
 		return INSTANCE;

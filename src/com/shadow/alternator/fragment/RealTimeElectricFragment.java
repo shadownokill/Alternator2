@@ -22,7 +22,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.RelativeLayout.LayoutParams;
-
+/**
+ * 图表
+ * 发电/市电
+ * @author 林知礼
+ *
+ */
 public class RealTimeElectricFragment extends Fragment {
 	private ImageView img_face;
 	private ImageView img_pointer;
