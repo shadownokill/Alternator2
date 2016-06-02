@@ -56,6 +56,12 @@ public class AlternatorCallBack implements Callback {
 		return false;
 	}
 
+	/**
+	 * 网络异常或处理回调时产生异常
+	 * @param type
+	 * @param code
+	 * @param msg
+	 */
 	public void onError(int type, int code, String msg) {
 		if (loading != null) {
 			loading.dismiss();

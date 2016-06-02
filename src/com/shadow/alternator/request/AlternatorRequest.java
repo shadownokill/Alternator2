@@ -16,6 +16,11 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
+/**
+ * 所有接口封装
+ * @author L
+ *
+ */
 public class AlternatorRequest {
 //commonthread
     private static OkHttpClient client = new OkHttpClient();

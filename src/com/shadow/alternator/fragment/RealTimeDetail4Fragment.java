@@ -61,6 +61,10 @@ public class RealTimeDetail4Fragment extends Fragment {
 		}
 	};
 
+	/**
+	 * 更新页面数据
+	 * @param basicModel
+	 */
 	private void updateData(DeviceIOModel basicModel) {
 		if (basicModel.in_alarm_stopemerg == 1) {
 			text_i0.setBackgroundResource(R.drawable.bg_circle_on);

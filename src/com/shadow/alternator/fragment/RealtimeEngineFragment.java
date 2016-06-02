@@ -45,12 +45,21 @@ public class RealtimeEngineFragment extends Fragment {
 		}
 	};
 
+	/**
+	 * 更新页面数据
+	 * @param basicModel
+	 */
 	private void updateData(DeviceBasicModel basicModel) {
 		int speed = basicModel.DES_SPEED;
+		//最大转速
 		float max = 2400f;
+		//最大可用角度
 		float degree = 240f;
+		//起始角度
 		int degreeStart = -120;
+		//每一转速对应角度
 		float speedperdegree = max / degree;
+		//旋转角度
 		int d = (int) (speed / speedperdegree);
 		img_pointer.setRotation(d + degreeStart);
 		setData(rlayout_1, (basicModel.DES_WATER_TEMP == 32768?"+++":(basicModel.DES_WATER_TEMP+""))+"℃", R.drawable.icon_shuiwen, (int)(basicModel.DES_WATER_TEMP/120.0f) , RelativeLayout.ALIGN_PARENT_BOTTOM);

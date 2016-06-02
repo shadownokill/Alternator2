@@ -67,6 +67,10 @@ public class RealTimeDetail2Fragment extends Fragment {
 		}
 	};
 
+	/**
+	 * 更新页面数据
+	 * @param basicModel
+	 */
 	private void updateData(DeviceBasicModel basicModel) {
 		if (page == 1) {
 

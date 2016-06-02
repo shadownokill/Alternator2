@@ -41,6 +41,10 @@ public class WaringsFragment extends Fragment {
 		}
 	};
 
+	/**
+	 * 更新页面数据
+	 * @param basicModel
+	 */
 	private void updateData(DeviceAlarmModel basicModel) {
 		try {
 			data.clear();

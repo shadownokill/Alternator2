@@ -58,7 +58,11 @@ public class RealTimeDetail1Fragment extends Fragment {
 			updateData(basicModel);
 		}
 	};
-
+	
+	/**
+	 * 更新页面数据
+	 * @param basicModel
+	 */
 	private void updateData(DeviceBasicModel basicModel) {
 		text_value1.setText(basicModel.DES_SPEED+"");
 		text_value2.setText(basicModel.DES_WATER_TEMP_Format+"");

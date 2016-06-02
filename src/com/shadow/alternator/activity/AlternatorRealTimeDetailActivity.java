@@ -23,6 +23,11 @@ import com.shadow.alternator.fragment.RealTimeDetail1Fragment;
 import com.shadow.alternator.fragment.RealTimeDetail2Fragment;
 import com.shadow.alternator.fragment.RealTimeDetail4Fragment;
 
+/**
+ * 详细数据
+ * @author L
+ *
+ */
 public class AlternatorRealTimeDetailActivity extends BaseActivity {
 
 	private HorizontalScrollView hsv_titles;

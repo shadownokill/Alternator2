@@ -43,10 +43,13 @@ public class RealTimeWorkloadFragment extends Fragment {
 			updateData(basicModel);
 		}
 	};
-
+	
+	/**
+	 * 更新页面数据
+	 * @param basicModel
+	 */
 	private void updateData(DeviceBasicModel basicModel) {
 		// 有功功率
-
 		double speed = StringTool.str2double(basicModel.OIL_ACTIVEPOWER_TOTAL_Format, 0.0);
 		float max = 60f;
 		float degree = 190f;
